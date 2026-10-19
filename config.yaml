@@ -1,0 +1,159 @@
+# Job Radar configuration
+# Hard filters live here. Language / location judgment happens in the daily Claude review.
+
+# How far back each daily run looks (overlap with yesterday is fine: dedupe handles it)
+hours_old: 48
+
+# --- Job boards via JobSpy (LinkedIn, Indeed, Google Jobs) ---
+search_terms:
+  - "product manager"
+  - "senior product manager"
+  - "technical product manager"
+  - "AI product manager"
+  - "data product manager"
+  - "product owner"
+  - "founding product manager"
+  - "entrepreneur in residence"
+  - "venture builder"
+  - "founder associate"
+  - "chief of staff"
+  - "technical project manager"
+  - "product operations"
+
+# Each search runs once per location below
+board_locations:
+  - name: "Berlin, Germany"     # hybrid / on-site / remote at Berlin companies
+    remote_only: false
+  - name: "Germany"             # remote roles anywhere in Germany
+    remote_only: true
+  - name: "European Union"      # remote roles in Europe
+    remote_only: true
+  - name: "Worldwide"           # fully remote, anywhere
+    remote_only: true
+
+results_per_search: 40
+sites: ["linkedin", "indeed", "google"]
+
+# --- Bundesagentur für Arbeit Jobbörse ---
+arbeitsagentur:
+  enabled: true
+  searches:
+    - { was: "Product Manager", wo: "Berlin", umkreis: 25 }
+    - { was: "Product Owner", wo: "Berlin", umkreis: 25 }
+    - { was: "Produktmanager", wo: "Berlin", umkreis: 25 }
+    - { was: "Product Manager", wo: "Deutschland", homeoffice: true }
+
+# --- Title filters (applied to every source) ---
+# Regex fragments, matched case-insensitively against the job title
+title_include:
+  - 'product manager'
+  - 'product owner'
+  - 'product lead'
+  - 'product management'
+  - 'founding pm'
+  - '\bpm\b'
+  - 'entrepreneur in residence'
+  - '\beir\b'
+  - 'venture build'
+  - 'founders? associate'
+  - 'chief of staff'
+  - 'project manager'
+  - 'programm?e? manager'
+  - 'product op(eration)?s'
+  - 'produktmanager'
+  - 'product strategist'
+
+title_exclude:
+  - '\bintern\b'
+  - 'internship'
+  - 'werkstudent'
+  - 'working student'
+  - 'praktik'
+  - 'trainee'
+  - 'junior'
+  - '\bjr\.?\b'
+  - 'apprentice'
+  - 'ausbildung'
+  - 'head of'
+  - 'director'
+  - '\bvp\b'
+  - 'vice president'
+  - 'principal'
+  - '\bcpo\b'
+  - 'construction'
+  - '\bbau'
+  - 'clinical trial'
+  - 'site manager'
+  - 'mechanical'
+
+# Companies to never show
+excluded_companies:
+  - "Babbel"
+
+# --- Company career pages (public ATS feeds) ---
+# ats: greenhouse | lever | ashby | personio | smartrecruiters | workable | auto
+# slug: the company's board name on that ATS. 'auto' tries every ATS with the slug.
+# Results of auto-detection are cached in data/ats_cache.json and reported in data/ats_report.json.
+companies:
+  # Berlin – AI / data
+  - { name: "DeepL", ats: auto, slug: deepl }
+  - { name: "n8n", ats: auto, slug: n8n }
+  - { name: "Langfuse", ats: auto, slug: langfuse }
+  - { name: "Parloa", ats: auto, slug: parloa }
+  - { name: "Black Forest Labs", ats: auto, slug: blackforestlabs }
+  - { name: "Merantix", ats: auto, slug: merantix }
+  - { name: "Aleph Alpha", ats: auto, slug: alephalpha }
+  - { name: "ElevenLabs", ats: auto, slug: elevenlabs }
+  - { name: "Helsing", ats: auto, slug: helsing }
+  - { name: "Knowunity", ats: auto, slug: knowunity }
+  - { name: "Tacto", ats: auto, slug: tacto }
+  - { name: "Cognigy", ats: auto, slug: cognigy }
+  # Berlin – fintech / scale-ups
+  - { name: "N26", ats: auto, slug: n26 }
+  - { name: "Trade Republic", ats: auto, slug: traderepublic }
+  - { name: "Raisin", ats: auto, slug: raisin }
+  - { name: "SumUp", ats: auto, slug: sumup }
+  - { name: "Solaris", ats: auto, slug: solarisgroup }
+  - { name: "Scalable Capital", ats: auto, slug: scalablecapital }
+  - { name: "Taxfix", ats: auto, slug: taxfix }
+  - { name: "Qonto", ats: auto, slug: qonto }
+  - { name: "Pliant", ats: auto, slug: pliant }
+  - { name: "Mondu", ats: auto, slug: mondu }
+  # Berlin – marketplaces / consumer / B2B SaaS
+  - { name: "GetYourGuide", ats: auto, slug: getyourguide }
+  - { name: "Contentful", ats: auto, slug: contentful }
+  - { name: "Delivery Hero", ats: auto, slug: deliveryhero }
+  - { name: "HelloFresh", ats: auto, slug: hellofresh }
+  - { name: "Choco", ats: auto, slug: choco }
+  - { name: "Sennder", ats: auto, slug: sennder }
+  - { name: "Forto", ats: auto, slug: forto }
+  - { name: "Enpal", ats: auto, slug: enpal }
+  - { name: "1KOMMA5°", ats: auto, slug: 1komma5grad }
+  - { name: "Personio", ats: auto, slug: personio }
+  - { name: "Pitch", ats: auto, slug: pitch }
+  - { name: "Clue", ats: auto, slug: clue }
+  - { name: "Ada Health", ats: auto, slug: adahealth }
+  - { name: "HeyJobs", ats: auto, slug: heyjobs }
+  - { name: "Bolt", ats: auto, slug: bolt }
+  - { name: "Grover", ats: auto, slug: grover }
+  - { name: "Wonderbill", ats: auto, slug: wonderbill }
+  - { name: "Yepoda", ats: auto, slug: yepoda }
+  # Remote-first / remote-friendly worldwide
+  - { name: "Hostaway", ats: auto, slug: hostaway }
+  - { name: "GitLab", ats: auto, slug: gitlab }
+  - { name: "Remote", ats: auto, slug: remote }
+  - { name: "Deel", ats: auto, slug: deel }
+  - { name: "Zapier", ats: auto, slug: zapier }
+  - { name: "Doist", ats: auto, slug: doist }
+  - { name: "Automattic", ats: auto, slug: automattic }
+  - { name: "Canonical", ats: auto, slug: canonical }
+  - { name: "Toggl", ats: auto, slug: toggl }
+  - { name: "Hotjar", ats: auto, slug: hotjar }
+  - { name: "Lovable", ats: auto, slug: lovable }
+  - { name: "Synthesia", ats: auto, slug: synthesia }
+  - { name: "Hugging Face", ats: auto, slug: huggingface }
+  - { name: "Mistral AI", ats: auto, slug: mistral }
+  - { name: "PostHog", ats: auto, slug: posthog }
+  - { name: "Supabase", ats: auto, slug: supabase }
+  - { name: "Linear", ats: auto, slug: linear }
+  - { name: "LivePerson", ats: auto, slug: liveperson }

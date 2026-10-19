@@ -1,0 +1,37 @@
+name: Daily job scan
+
+on:
+  schedule:
+    - cron: "17 4 * * *"   # every day ~06:17 Berlin time
+  workflow_dispatch: {}      # "Run workflow" button for manual runs
+  push:                      # re-scan right after the config or scraper changes
+    branches: [main]
+    paths: ["config.yaml", "scrape.py"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: job-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python scrape.py
+      - name: Commit results
+        run: |
+          git config user.name "job-radar-bot"
+          git config user.email "job-radar-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "scan $(date -u +%F)"
+          git pull --rebase --autostash
+          git push
