@@ -2,7 +2,7 @@ name: Daily job scan
 
 on:
   schedule:
-    - cron: "17 4 * * *"   # every day ~06:17 Berlin time
+    - cron: "17 3 * * *"   # every day ~05:17 Berlin (CEST) / 04:17 (CET)
   workflow_dispatch: {}      # "Run workflow" button for manual runs
   push:                      # re-scan right after the config or scraper changes
     branches: [main]

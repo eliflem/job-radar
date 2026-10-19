@@ -4,7 +4,7 @@ Personal daily job finder for product roles (PM, PO, founding PM, EIR, venture b
 
 ## How it works
 
-1. **GitHub Actions** (`.github/workflows/daily.yml`) runs `scrape.py` every morning (~06:17 Berlin).
+1. **GitHub Actions** (`.github/workflows/daily.yml`) runs `scrape.py` every morning (~05:17 Berlin).
 2. `scrape.py` collects listings from:
    - **Job boards** via [JobSpy](https://github.com/speedyapply/JobSpy): LinkedIn, Indeed, Google Jobs — Berlin (any work mode) + remote searches for Germany, EU and worldwide.
    - **Bundesagentur für Arbeit Jobbörse** via its public Jobsuche API.

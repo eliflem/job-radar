@@ -1,0 +1,347 @@
+<title>Job Radar</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one working table under a compact masthead; rows collapse to stacked cards on phones. */
+:root {
+  --bg: #f5f7f8;
+  --surface: #ffffff;
+  --ink: #15212b;
+  --muted: #5d6b77;
+  --line: #dde3e8;
+  --accent: #0f6b74;
+  --accent-soft: #e2f0f1;
+  --up: #1d7a46;
+  --up-soft: #e3f3e9;
+  --down: #b03a2e;
+  --down-soft: #f8e5e2;
+  --new: #9a6200;
+  --new-soft: #fbf0d9;
+  --font-display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1519; --surface: #172026; --ink: #e6edf1; --muted: #93a2ad; --line: #2a363e;
+    --accent: #5cc2c9; --accent-soft: #163338; --up: #6cd297; --up-soft: #173326;
+    --down: #f08f84; --down-soft: #3a1f1c; --new: #f0bd5a; --new-soft: #33280f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1519; --surface: #172026; --ink: #e6edf1; --muted: #93a2ad; --line: #2a363e;
+  --accent: #5cc2c9; --accent-soft: #163338; --up: #6cd297; --up-soft: #173326;
+  --down: #f08f84; --down-soft: #3a1f1c; --new: #f0bd5a; --new-soft: #33280f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+}
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 20px;
+}
+header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+h1 {
+  font-family: var(--font-display); font-weight: 700; font-size: 2rem; line-height: 1.1;
+  margin: 0; letter-spacing: -0.01em; text-wrap: balance;
+  display: flex; align-items: center; gap: 10px;
+}
+.sweep { width: 30px; height: 30px; flex: none; }
+.sub { margin: 4px 0 0; color: var(--muted); font-size: 0.93rem; }
+.stats { display: flex; gap: 8px; flex-wrap: wrap; font-family: var(--font-data); font-size: 0.8rem; }
+.stat { padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); font-variant-numeric: tabular-nums; }
+.stat b { color: var(--ink); font-weight: 500; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: inherit; font-size: 0.88rem; font-weight: 500; cursor: pointer;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--muted);
+}
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.chip:focus-visible, .vote:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.search {
+  font: inherit; font-size: 0.92rem; padding: 7px 12px; min-width: 0; width: 260px; max-width: 100%;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink);
+}
+
+.board { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 1px solid var(--line);
+  white-space: nowrap; background: var(--surface); position: sticky; top: 0;
+}
+tbody td { padding: 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr.is-new td:first-child { box-shadow: inset 3px 0 0 var(--new); }
+.date { font-family: var(--font-data); font-size: 0.82rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.company { font-weight: 600; }
+.title { font-weight: 500; }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 4px; font-size: 0.82rem; color: var(--muted); }
+.mode { font-family: var(--font-data); font-size: 0.72rem; padding: 1px 7px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+.why { margin-top: 6px; font-size: 0.85rem; color: var(--muted); max-width: 52ch; }
+.open {
+  display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+  color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem;
+}
+.open:hover { text-decoration: underline; }
+.src { display: block; font-family: var(--font-data); font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+.fb { display: grid; gap: 6px; min-width: 210px; }
+.votes { display: flex; gap: 6px; }
+.vote {
+  font: inherit; font-size: 1rem; line-height: 1; cursor: pointer; padding: 6px 10px;
+  border-radius: 8px; border: 1px solid var(--line); background: var(--surface);
+}
+.vote[data-v="up"][aria-pressed="true"] { background: var(--up-soft); border-color: var(--up); }
+.vote[data-v="down"][aria-pressed="true"] { background: var(--down-soft); border-color: var(--down); }
+.vote[disabled] { cursor: default; opacity: 0.6; }
+.note {
+  font: inherit; font-size: 0.86rem; width: 100%; padding: 6px 9px; border-radius: 6px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+}
+.saved { font-size: 0.74rem; color: var(--muted); min-height: 1em; }
+.empty { padding: 48px 20px; text-align: center; color: var(--muted); }
+.empty h2 { font-family: var(--font-display); color: var(--ink); font-size: 1.2rem; margin: 0 0 6px; }
+.empty p { margin: 0 auto; max-width: 52ch; }
+.note-banner { font-size: 0.86rem; color: var(--muted); }
+
+@media (max-width: 720px) {
+  .board { overflow: visible; background: transparent; border: 0; }
+  table, tbody, tr, td { display: block; }
+  thead { display: none; }
+  tbody { display: grid; gap: 10px; }
+  tbody tr { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 8px; }
+  tbody tr.is-new { box-shadow: inset 3px 0 0 var(--new); }
+  tbody tr.is-new td:first-child { box-shadow: none; }
+  tbody td { padding: 0; border: 0; }
+  .fb { min-width: 0; }
+  .search { width: 100%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sweep .arm { transform-origin: 16px 16px; animation: sweep 6s linear infinite; }
+  @keyframes sweep { to { transform: rotate(360deg); } }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>
+        <svg class="sweep" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="var(--line)" stroke-width="2"/>
+          <circle cx="16" cy="16" r="8" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+          <g class="arm"><path d="M16 16 L16 2 A14 14 0 0 1 28.1 9 Z" fill="var(--accent)" opacity="0.35"/><line x1="16" y1="16" x2="16" y2="2" stroke="var(--accent)" stroke-width="2"/></g>
+          <circle cx="22" cy="21" r="2" fill="var(--new)"/>
+        </svg>
+        Job Radar
+      </h1>
+      <p class="sub">Product roles in Berlin or fully remote, English or Turkish. New matches arrive every morning.</p>
+    </div>
+    <div class="stats" id="stats" aria-live="polite"></div>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by feedback">
+      <button class="chip" id="f-all" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" id="f-unrated" data-f="unrated" aria-pressed="false">Not rated yet</button>
+      <button class="chip" id="f-up" data-f="up" aria-pressed="false">👍 Liked</button>
+      <button class="chip" id="f-down" data-f="down" aria-pressed="false">👎 Passed</button>
+    </div>
+    <input class="search" id="search" type="search" placeholder="Search company or title" aria-label="Search company or title">
+  </div>
+
+  <div class="board">
+    <table>
+      <thead><tr><th>Date added</th><th>Company</th><th>Position</th><th>Job ad</th><th>Feedback</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty">
+      <h2 id="empty-title">Waiting for the first scan</h2>
+      <p id="empty-text">Each morning Claude reviews the overnight scan and adds matching roles here. Rate each one with 👍 or 👎 and a short note, and the next scans learn from it.</p>
+    </div>
+  </div>
+  <p class="note-banner" id="ro-note" hidden>You can view this list but not leave feedback.</p>
+</div>
+
+<script>
+(function () {
+  const rowsEl = document.getElementById("rows");
+  const emptyEl = document.getElementById("empty");
+  const statsEl = document.getElementById("stats");
+  const searchEl = document.getElementById("search");
+  let jobs = [];
+  let filter = "all";
+  let canWrite = true;
+  let db = null;
+  const pending = new Map(); // id -> timer for note saves
+  const today = new Date().toISOString().slice(0, 10);
+
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function fmtDate(d) {
+    if (!d) return "";
+    const dt = new Date(d + "T12:00:00");
+    if (isNaN(dt)) return d;
+    return dt.toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
+  }
+
+  function visible() {
+    const q = searchEl.value.trim().toLowerCase();
+    return jobs.filter(j => {
+      if (filter === "unrated" && j.vote) return false;
+      if (filter === "up" && j.vote !== "up") return false;
+      if (filter === "down" && j.vote !== "down") return false;
+      if (q && !((j.company || "") + " " + (j.title || "")).toLowerCase().includes(q)) return false;
+      return true;
+    });
+  }
+
+  function renderStats() {
+    const latest = jobs.reduce((m, j) => (j.added > m ? j.added : m), "");
+    const latestCount = jobs.filter(j => j.added === latest).length;
+    const unrated = jobs.filter(j => !j.vote).length;
+    statsEl.replaceChildren();
+    const add = (label, val) => { const s = el("span", "stat"); s.append(el("b", null, String(val)), " " + label); statsEl.append(s); };
+    add("roles", jobs.length);
+    if (latest) add("added " + fmtDate(latest), latestCount);
+    add("to rate", unrated);
+  }
+
+  async function save(id, patch, statusEl) {
+    if (!db) return;
+    try {
+      await db.collection("jobs").doc(id).update(Object.assign({}, patch, { feedbackAt: new Date().toISOString() }));
+      if (statusEl) statusEl.textContent = "Saved";
+    } catch (e) {
+      if (e && e.code === "invalid_argument") { canWrite = false; render(); document.getElementById("ro-note").hidden = false; }
+      else if (statusEl) statusEl.textContent = "Couldn't save. Check your connection and try again.";
+    }
+  }
+
+  function row(j) {
+    const tr = el("tr");
+    tr.dataset.id = j.id;
+    if (j.added === today && !j.vote) tr.classList.add("is-new");
+
+    const tdDate = el("td"); tdDate.append(el("span", "date", fmtDate(j.added)));
+    const tdCo = el("td"); tdCo.append(el("div", "company", j.company || "Unknown company"));
+
+    const tdPos = el("td");
+    tdPos.append(el("div", "title", j.title || ""));
+    const meta = el("div", "meta");
+    if (j.mode) meta.append(el("span", "mode", j.mode));
+    if (j.location) meta.append(el("span", null, j.location));
+    if (meta.childNodes.length) tdPos.append(meta);
+    if (j.why) tdPos.append(el("div", "why", j.why));
+
+    const tdUrl = el("td");
+    if (j.url) {
+      const a = el("a", "open", "Open ad ↗");
+      a.href = j.url; a.target = "_blank"; a.rel = "noopener";
+      tdUrl.append(a);
+    }
+    if (j.source) tdUrl.append(el("span", "src", j.source));
+
+    const tdFb = el("td");
+    const fb = el("div", "fb");
+    const votes = el("div", "votes");
+    const status = el("div", "saved");
+    for (const [v, label, aria] of [["up", "👍", "Good match"], ["down", "👎", "Not for me"]]) {
+      const b = el("button", "vote", label);
+      b.type = "button"; b.dataset.v = v;
+      b.setAttribute("aria-label", aria);
+      b.setAttribute("aria-pressed", j.vote === v ? "true" : "false");
+      b.disabled = !canWrite;
+      b.addEventListener("click", () => {
+        const next = j.vote === v ? null : v;
+        j.vote = next;
+        render();
+        save(j.id, { vote: next }, null);
+      });
+      votes.append(b);
+    }
+    const note = el("input", "note");
+    note.id = "note-" + j.id;
+    note.type = "text";
+    note.placeholder = j.vote === "down" ? "Why not? (e.g. too sales-y, agency)" : "Optional note";
+    note.value = j.note || "";
+    note.disabled = !canWrite;
+    note.setAttribute("aria-label", "Feedback note for " + (j.title || "this role"));
+    note.addEventListener("input", () => {
+      status.textContent = "";
+      clearTimeout(pending.get(j.id));
+      pending.set(j.id, setTimeout(() => { j.note = note.value; save(j.id, { note: note.value }, status); }, 900));
+    });
+    fb.append(votes, note, status);
+    tdFb.append(fb);
+
+    tr.append(tdDate, tdCo, tdPos, tdUrl, tdFb);
+    return tr;
+  }
+
+  function render() {
+    // keep a note field being typed in untouched
+    const active = document.activeElement;
+    const activeId = active && active.classList && active.classList.contains("note") ? active.id : null;
+    const caret = activeId ? active.selectionStart : null;
+    const list = visible();
+    rowsEl.replaceChildren(...list.map(row));
+    if (activeId) {
+      const again = document.getElementById(activeId);
+      if (again) { again.value = active.value; again.focus(); try { again.setSelectionRange(caret, caret); } catch (e) {} }
+    }
+    emptyEl.hidden = list.length > 0;
+    if (!list.length && jobs.length) {
+      document.getElementById("empty-title").textContent = "Nothing matches this filter";
+      document.getElementById("empty-text").textContent = "Try another filter or clear the search.";
+    }
+    renderStats();
+  }
+
+  document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+    filter = c.dataset.f;
+    document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === c ? "true" : "false"));
+    render();
+  }));
+  searchEl.addEventListener("input", render);
+
+  render();
+
+  (async () => {
+    if (!window.claude || !window.claude.use) return;
+    const [dbNs, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!dbNs) return;
+    db = dbNs;
+    if (user) {
+      const w = await user.can("data.write");
+      if (w === false) { canWrite = false; document.getElementById("ro-note").hidden = false; }
+    }
+    db.collection("jobs").orderBy("added", "desc").limit(1000).onSnapshot(snap => {
+      const typing = document.activeElement && document.activeElement.classList.contains("note");
+      jobs = snap.docs.map(d => Object.assign({ id: d.id }, d.data()))
+        .map(j => {
+          // keep a note that is still being typed instead of the stored one
+          if (typing && pending.has(j.id) && document.activeElement.id === "note-" + j.id) j.note = document.activeElement.value;
+          return j;
+        })
+        .sort((a, b) => (b.added || "").localeCompare(a.added || "") || (a.company || "").localeCompare(b.company || ""));
+      render();
+    }, () => {});
+  })();
+})();
+</script>
