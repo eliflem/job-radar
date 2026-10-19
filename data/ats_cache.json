@@ -109,5 +109,8 @@
  "Paddle": "ashby|paddle",
  "Help Scout": "ashby|helpscout",
  "Ghost": "greenhouse|ghost",
- "Mattermost": "greenhouse|mattermost"
+ "Mattermost": "greenhouse|mattermost",
+ "Trade Republic": "greenhouse|traderepublicbank",
+ "Moss": "ashby|moss",
+ "Close": "ashby|close"
 }
