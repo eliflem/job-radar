@@ -115,7 +115,7 @@ companies:
   - { name: "Raisin", ats: auto, slug: raisin }
   - { name: "SumUp", ats: auto, slug: sumup }
   - { name: "Solaris", ats: auto, slug: [solarisgroup, solaris, solarisbank, solarisse] }
-  - { name: "Scalable Capital", ats: auto, slug: [scalablecapital, scalable, scalablegmbh, scalable-capital] }
+  - { name: "Scalable Capital", ats: auto, slug: [scalablecapital, scalablegmbh, scalable-capital] }
   - { name: "Taxfix", ats: auto, slug: [taxfix, taxfixgmbh, taxfixse, taxfix-gmbh] }
   - { name: "Qonto", ats: auto, slug: qonto }
   - { name: "Pliant", ats: auto, slug: pliant }
