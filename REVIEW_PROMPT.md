@@ -36,7 +36,10 @@ Look at rows whose `feedbackAt` is newer than `state.feedbackSeenAt`.
   - `mode`: "Remote", "Hybrid" or "On-site"
   - `why`: one short line on why it fits or what to double-check (≤ 110 chars, plain words)
   - `vote`: null, `note`: ""
-- Never touch `vote`, `note` or `feedbackAt` on existing rows — those are Elif's.
+- Only ever create NEW rows. Never pass `if_version` for a `jobs` write and never use `update`/`delete` on `jobs`:
+  without `if_version` the store refuses to overwrite an existing document, so an accidental id collision fails safely.
+  If a write is refused because the document exists, skip that candidate.
+- Never touch `vote`, `note` or `feedbackAt` on existing rows — those are Elif's. Existing rows stay exactly as they are.
 
 ## 4. Save state
 Write `meta/state` with the updated `processed` list (keep the last 60 names) and `feedbackSeenAt` = now
