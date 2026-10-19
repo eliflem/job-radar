@@ -66,9 +66,12 @@ def clean_text(raw) -> str:
     return text.strip()[:DESC_LIMIT]
 
 
+GENDER_TAG = re.compile(r"\((?:[mwfdxnhgi*]\s*[/|,]\s*)+[mwfdxnhgi*]\)|\((?:all genders?|gn|w/m/d|m/f/d|d/f/m)\)|\[gn\]", re.I)
+
+
 def norm(s: str) -> str:
     s = (s or "").lower()
-    s = re.sub(r"\(.*?\)", " ", s)  # drop (m/w/d), (f/m/x) ...
+    s = GENDER_TAG.sub(" ", s)  # drop (m/w/d), (f/m/x), (all genders) ...
     s = re.sub(r"\b(gmbh|ag|se|inc|ltd|llc|bv|sas)\b", " ", s)
     return re.sub(r"[^a-z0-9]+", "", s)
 
@@ -132,6 +135,17 @@ def linkedin_description(job_id: str) -> str:
         return ""
 
 
+REMOTE_WORD = re.compile(r"\bremote\b|work from anywhere|fully distributed|home[- ]based", re.I)
+
+
+def looks_remote(row) -> bool:
+    """LinkedIn's remote filter is loose: drop on-site jobs from the remote-only searches."""
+    if row.get("is_remote") is True:
+        return True
+    text = " ".join(str(row.get(k) or "") for k in ("title", "location")) + " " + str(row.get("description") or "")[:4000]
+    return bool(REMOTE_WORD.search(text))
+
+
 def collect_boards(cfg, flt: Filters) -> list[dict]:
     try:
         from jobspy import scrape_jobs
@@ -171,6 +185,8 @@ def collect_boards(cfg, flt: Filters) -> list[dict]:
             for row in df.to_dict("records"):
                 title, company = row.get("title") or "", row.get("company") or ""
                 if not flt.title_ok(title) or not flt.company_ok(company):
+                    continue
+                if remote_only and not looks_remote(row):
                     continue
                 url = row.get("job_url_direct") or row.get("job_url") or ""
                 out.append(job(
@@ -222,7 +238,7 @@ def collect_arbeitsagentur(cfg, flt: Filters) -> list[dict]:
         if s.get("homeoffice"):
             params["arbeitszeit"] = "ho"
         try:
-            r = get(f"{BA_BASE}/pc/v4/jobs", params=params, headers=BA_HEADERS)
+            r = get(f"{BA_BASE}/pc/v6/jobs", params=params, headers=BA_HEADERS)
             r.raise_for_status()
             offers = r.json().get("stellenangebote", []) or []
         except Exception as e:
@@ -337,20 +353,25 @@ def collect_companies(cfg, flt: Filters) -> list[dict]:
     for c in cfg.get("companies", []):
         name, slug, ats = c["name"], str(c["slug"]), c.get("ats", "auto")
         order = [ats] if ats in ATS else ([cache[name]] if cache.get(name) in ATS else list(ATS))
-        postings, found = None, None
+        postings, found, empty_hit = None, None, None
         for a in order:
             try:
-                postings = ATS[a](slug)
+                res = ATS[a](slug)
             except Exception:
-                postings = None
-            if postings is not None:
-                found = a
+                res = None
+            if res:  # a board with open roles wins
+                postings, found = res, a
                 break
+            if res is not None and empty_hit is None:
+                empty_hit = a  # valid-looking but empty (some ATS answer 200 for unknown slugs)
+        if found is None and empty_hit and ats in ATS:
+            postings, found = [], empty_hit  # explicitly configured ATS with no open roles today
         if found is None:
-            status[name] = "not found (fix slug/ats in config.yaml)"
+            status[name] = "no open roles found (check slug/ats in config.yaml)"
             cache.pop(name, None)
             continue
-        cache[name] = found
+        if postings:
+            cache[name] = found
         kept = 0
         for p in postings:
             if not flt.title_ok(p.get("title") or ""):
