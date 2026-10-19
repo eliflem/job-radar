@@ -158,3 +158,125 @@ companies:
   - { name: "Supabase", ats: auto, slug: supabase }
   - { name: "Linear", ats: auto, slug: linear }
   - { name: "LivePerson", ats: auto, slug: liveperson }
+
+  # Berlin – AI & data (added 2026-10-19)
+  - { name: "Langdock", ats: auto, slug: langdock }
+  - { name: "Peec AI", ats: auto, slug: peec }
+  - { name: "Qdrant", ats: auto, slug: qdrant }
+  - { name: "deepset", ats: auto, slug: deepset }
+  - { name: "Cognee", ats: auto, slug: cognee }
+  - { name: "Tower", ats: auto, slug: tower }
+  - { name: "Plato", ats: auto, slug: plato }
+  - { name: "Voyfai", ats: auto, slug: voyfai }
+  - { name: "Bounti", ats: auto, slug: bounti }
+  - { name: "Juna.ai", ats: auto, slug: juna }
+  - { name: "Rasa", ats: auto, slug: rasa }
+  - { name: "Spread", ats: auto, slug: spread }
+  - { name: "LiveEO", ats: auto, slug: liveeo }
+  - { name: "Voize", ats: auto, slug: voize }
+  - { name: "Elephant", ats: auto, slug: elephant }
+  - { name: "Diligent AI", ats: auto, slug: diligentai }
+  - { name: "Terra One", ats: auto, slug: terraone }
+  - { name: "Noxtua", ats: auto, slug: noxtua }
+  - { name: "Workpath", ats: auto, slug: workpath }
+  # Berlin – fintech & money (added 2026-10-19)
+  - { name: "Upvest", ats: auto, slug: upvest }
+  - { name: "Moss", ats: auto, slug: getmoss }
+  - { name: "Bunch", ats: auto, slug: bunch }
+  - { name: "getquin", ats: auto, slug: getquin }
+  - { name: "Kontist", ats: auto, slug: kontist }
+  - { name: "Accountable", ats: auto, slug: accountable }
+  - { name: "Candis", ats: auto, slug: candis }
+  - { name: "Billie", ats: auto, slug: billie }
+  - { name: "Vivid Money", ats: auto, slug: vivid }
+  - { name: "Unzer", ats: auto, slug: unzer }
+  - { name: "Penta", ats: auto, slug: penta }
+  - { name: "Nelly", ats: auto, slug: nelly }
+  - { name: "Finom", ats: auto, slug: finom }
+  - { name: "Kombo", ats: auto, slug: kombo }
+  - { name: "Complydo", ats: auto, slug: complydo }
+  - { name: "Finperks", ats: auto, slug: finperks }
+  # Berlin – consumer, marketplaces, mobility (added 2026-10-19)
+  - { name: "Ecosia", ats: auto, slug: ecosia }
+  - { name: "Komoot", ats: auto, slug: komoot }
+  - { name: "Blinkist", ats: auto, slug: blinkist }
+  - { name: "Ableton", ats: auto, slug: ableton }
+  - { name: "SoundCloud", ats: auto, slug: soundcloud }
+  - { name: "Native Instruments", ats: auto, slug: nativeinstruments }
+  - { name: "ResearchGate", ats: auto, slug: researchgate }
+  - { name: "HomeToGo", ats: auto, slug: hometogo }
+  - { name: "Omio", ats: auto, slug: omio }
+  - { name: "Flix", ats: auto, slug: flix }
+  - { name: "Vay", ats: auto, slug: vay }
+  - { name: "Dott", ats: auto, slug: dott }
+  - { name: "Flink", ats: auto, slug: flink }
+  - { name: "everphone", ats: auto, slug: everphone }
+  - { name: "Zenjob", ats: auto, slug: zenjob }
+  - { name: "Seven Education", ats: auto, slug: seveneducation }
+  - { name: "Doctolib", ats: auto, slug: doctolib }
+  - { name: "Adjust", ats: auto, slug: adjust }
+  - { name: "Mobimeo", ats: auto, slug: mobimeo }
+  # Berlin – B2B SaaS, health, climate (added 2026-10-19)
+  - { name: "Leapsome", ats: auto, slug: leapsome }
+  - { name: "Camunda", ats: auto, slug: camunda }
+  - { name: "Prisma", ats: auto, slug: prisma }
+  - { name: "Kenjo", ats: auto, slug: kenjo }
+  - { name: "Oviva", ats: auto, slug: oviva }
+  - { name: "Kaia Health", ats: auto, slug: kaiahealth }
+  - { name: "Avi Medical", ats: auto, slug: avimedical }
+  - { name: "Ostrom", ats: auto, slug: ostrom }
+  - { name: "Cloover", ats: auto, slug: cloover }
+  - { name: "Zolar", ats: auto, slug: zolar }
+  - { name: "Thermondo", ats: auto, slug: thermondo }
+  - { name: "Ecoligo", ats: auto, slug: ecoligo }
+  - { name: "Gropyus", ats: auto, slug: gropyus }
+  - { name: "Wefox", ats: auto, slug: wefox }
+  - { name: "Moia", ats: auto, slug: moia }
+  - { name: "Miro", ats: auto, slug: miro }
+  - { name: "Patronus", ats: auto, slug: patronus }
+  - { name: "Nox Mobility", ats: auto, slug: noxmobility }
+  # EU remote-first / remote-friendly (added 2026-10-19)
+  - { name: "Oyster", ats: auto, slug: oysterhr }
+  - { name: "Pleo", ats: auto, slug: pleo }
+  - { name: "Alan", ats: auto, slug: alan }
+  - { name: "Spendesk", ats: auto, slug: spendesk }
+  - { name: "Payhawk", ats: auto, slug: payhawk }
+  - { name: "Mollie", ats: auto, slug: mollie }
+  - { name: "Productboard", ats: auto, slug: productboard }
+  - { name: "Typeform", ats: auto, slug: typeform }
+  - { name: "Factorial", ats: auto, slug: factorial }
+  - { name: "Sanity", ats: auto, slug: sanity }
+  - { name: "Framer", ats: auto, slug: framer }
+  - { name: "Raycast", ats: auto, slug: raycast }
+  - { name: "Maze", ats: auto, slug: maze }
+  - { name: "Cal.com", ats: auto, slug: cal }
+  - { name: "Tines", ats: auto, slug: tines }
+  - { name: "Weaviate", ats: auto, slug: weaviate }
+  - { name: "Tinybird", ats: auto, slug: tinybird }
+  - { name: "Grafana Labs", ats: auto, slug: grafanalabs }
+  - { name: "Elastic", ats: auto, slug: elastic }
+  - { name: "Vercel", ats: auto, slug: vercel }
+  - { name: "Clerk", ats: auto, slug: clerk }
+  - { name: "Railway", ats: auto, slug: railway }
+  - { name: "Resend", ats: auto, slug: resend }
+  - { name: "Gelato", ats: auto, slug: gelato }
+  - { name: "Mews", ats: auto, slug: mews }
+  - { name: "Pipedrive", ats: auto, slug: pipedrive }
+  - { name: "Teamtailor", ats: auto, slug: teamtailor }
+  - { name: "Preply", ats: auto, slug: preply }
+  - { name: "Brainly", ats: auto, slug: brainly }
+  - { name: "Docplanner", ats: auto, slug: docplanner }
+  - { name: "Bitpanda", ats: auto, slug: bitpanda }
+  - { name: "Ledger", ats: auto, slug: ledger }
+  - { name: "Kraken", ats: auto, slug: kraken }
+  - { name: "Dust", ats: auto, slug: dust }
+  - { name: "Photoroom", ats: auto, slug: photoroom }
+  - { name: "Poolside", ats: auto, slug: poolside }
+  - { name: "Legora", ats: auto, slug: legora }
+  - { name: "Mentimeter", ats: auto, slug: mentimeter }
+  - { name: "Malt", ats: auto, slug: malt }
+  - { name: "Paddle", ats: auto, slug: paddle }
+  - { name: "Close", ats: auto, slug: close.io }
+  - { name: "Help Scout", ats: auto, slug: helpscout }
+  - { name: "Ghost", ats: auto, slug: ghost }
+  - { name: "Mattermost", ats: auto, slug: mattermost }
