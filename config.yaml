@@ -1,4 +1,4 @@
-# Job Radar configuration
+# Job Radar configuration (edit and push to trigger a fresh scan)
 # Hard filters live here. Language / location judgment happens in the daily Claude review.
 
 # How far back each daily run looks (overlap with yesterday is fine: dedupe handles it)
