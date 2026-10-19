@@ -281,16 +281,21 @@ def ats_greenhouse(slug):
 
 
 def ats_lever(slug):
+    found_empty = False
     for host in ("api.lever.co", "api.eu.lever.co"):
         r = get(f"https://{host}/v0/postings/{slug}", params={"mode": "json"})
-        if r.status_code == 200 and isinstance(r.json(), list):
-            return [dict(title=x.get("text"), url=x.get("hostedUrl"),
-                         location=(x.get("categories") or {}).get("location", "") or "",
-                         remote=(x.get("workplaceType") == "remote") or None,
-                         posted=dt.datetime.utcfromtimestamp(x.get("createdAt", 0) / 1000).date().isoformat(),
-                         description=x.get("descriptionPlain", "") + "\n" + x.get("additionalPlain", ""),
-                         ext_id=x.get("id")) for x in r.json()]
-    return None
+        if r.status_code != 200 or not isinstance(r.json(), list):
+            continue
+        if not r.json():
+            found_empty = True  # try the other region before giving up
+            continue
+        return [dict(title=x.get("text"), url=x.get("hostedUrl"),
+                     location=(x.get("categories") or {}).get("location", "") or "",
+                     remote=(x.get("workplaceType") == "remote") or None,
+                     posted=dt.datetime.utcfromtimestamp(x.get("createdAt", 0) / 1000).date().isoformat(),
+                     description=x.get("descriptionPlain", "") + "\n" + x.get("additionalPlain", ""),
+                     ext_id=x.get("id")) for x in r.json()]
+    return [] if found_empty else None
 
 
 def ats_ashby(slug):
@@ -305,9 +310,18 @@ def ats_ashby(slug):
 
 
 def ats_personio(slug):
-    r = get(f"https://{slug}.jobs.personio.de/xml", params={"language": "en"}, allow_redirects=False)
-    if r.status_code != 200 or "<workzag-jobs" not in r.text:
+    r = None
+    for tld in ("de", "com"):
+        try:
+            r = get(f"https://{slug}.jobs.personio.{tld}/xml", params={"language": "en"})
+        except Exception:
+            r = None
+        if r is not None and r.status_code == 200 and "<position" in r.text or (r is not None and "<workzag-jobs" in r.text):
+            break
+        r = None
+    if r is None:
         return None
+    base = r.url.split("/xml")[0]
     root = ET.fromstring(r.content)
     jobs = []
     for p in root.findall("position"):
@@ -315,7 +329,7 @@ def ats_personio(slug):
         offices = [p.findtext("office") or ""] + [o.text or "" for o in p.findall("additionalOffices/office")]
         desc = "\n".join((d.findtext("name") or "") + "\n" + (d.findtext("value") or "")
                          for d in p.findall("jobDescriptions/jobDescription"))
-        jobs.append(dict(title=p.findtext("name"), url=f"https://{slug}.jobs.personio.de/job/{pid}",
+        jobs.append(dict(title=p.findtext("name"), url=f"{base}/job/{pid}",
                          location=", ".join(filter(None, offices)), remote=None,
                          posted=p.findtext("createdAt") or "", description=desc, ext_id=pid))
     return jobs

@@ -111,7 +111,7 @@ companies:
   - { name: "Cognigy", ats: auto, slug: cognigy }
   # Berlin – fintech / scale-ups
   - { name: "N26", ats: auto, slug: n26 }
-  - { name: "Trade Republic", ats: auto, slug: traderepublic }
+  - { name: "Trade Republic", ats: auto, slug: [traderepublicbank, traderepublic] }
   - { name: "Raisin", ats: auto, slug: raisin }
   - { name: "SumUp", ats: auto, slug: sumup }
   - { name: "Solaris", ats: auto, slug: [solarisgroup, solaris, solarisbank, solarisse] }
@@ -144,9 +144,9 @@ companies:
   - { name: "Hostaway", ats: auto, slug: [careers.hostaway.com, hostaway] }
   - { name: "GitLab", ats: auto, slug: gitlab }
   - { name: "Remote", ats: auto, slug: remote }
-  - { name: "Deel", ats: auto, slug: deel }
+  - { name: "Deel", ats: auto, slug: [deel, deelhr, letsdeel] }
   - { name: "Zapier", ats: auto, slug: zapier }
-  - { name: "Doist", ats: auto, slug: doist }
+  - { name: "Doist", ats: auto, slug: doist }   # own careers site; mainly caught via LinkedIn
   - { name: "Automattic", ats: auto, slug: automattic }
   - { name: "Canonical", ats: auto, slug: canonical }
   - { name: "Toggl", ats: auto, slug: toggl }
@@ -154,7 +154,7 @@ companies:
   - { name: "Lovable", ats: auto, slug: lovable }
   - { name: "Synthesia", ats: auto, slug: synthesia }
   - { name: "Hugging Face", ats: auto, slug: huggingface }
-  - { name: "Mistral AI", ats: auto, slug: mistral }
+  - { name: "Mistral AI", ats: lever, slug: mistral }
   - { name: "PostHog", ats: auto, slug: posthog }
   - { name: "Supabase", ats: auto, slug: supabase }
   - { name: "Linear", ats: auto, slug: linear }
@@ -163,8 +163,8 @@ companies:
   # Berlin – AI & data (added 2026-10-19)
   - { name: "Langdock", ats: auto, slug: langdock }
   - { name: "Peec AI", ats: auto, slug: peec }
-  - { name: "Qdrant", ats: auto, slug: qdrant }
-  - { name: "deepset", ats: auto, slug: deepset }
+  - { name: "Qdrant", ats: auto, slug: [qdrant, qdrantsolutions] }
+  - { name: "deepset", ats: personio, slug: deepset }
   - { name: "Cognee", ats: auto, slug: cognee }
   - { name: "Tower", ats: auto, slug: tower }
   - { name: "Plato", ats: auto, slug: plato }
@@ -182,7 +182,7 @@ companies:
   - { name: "Workpath", ats: auto, slug: workpath }
   # Berlin – fintech & money (added 2026-10-19)
   - { name: "Upvest", ats: auto, slug: upvest }
-  - { name: "Moss", ats: auto, slug: getmoss }
+  - { name: "Moss", ats: auto, slug: [getmoss, moss] }
   - { name: "Bunch", ats: auto, slug: bunch }
   - { name: "getquin", ats: auto, slug: getquin }
   - { name: "Kontist", ats: auto, slug: kontist }
@@ -198,8 +198,8 @@ companies:
   - { name: "Complydo", ats: auto, slug: complydo }
   - { name: "Finperks", ats: auto, slug: finperks }
   # Berlin – consumer, marketplaces, mobility (added 2026-10-19)
-  - { name: "Ecosia", ats: auto, slug: ecosia }
-  - { name: "Komoot", ats: auto, slug: komoot }
+  - { name: "Ecosia", ats: auto, slug: [ecosia, ecosiagmbh] }
+  - { name: "Komoot", ats: auto, slug: [komoot, komootgmbh] }
   - { name: "Blinkist", ats: auto, slug: blinkist }
   - { name: "Ableton", ats: auto, slug: ableton }
   - { name: "SoundCloud", ats: auto, slug: soundcloud }
@@ -218,7 +218,7 @@ companies:
   - { name: "Adjust", ats: auto, slug: adjust }
   - { name: "Mobimeo", ats: auto, slug: mobimeo }
   # Berlin – B2B SaaS, health, climate (added 2026-10-19)
-  - { name: "Leapsome", ats: auto, slug: leapsome }
+  - { name: "Leapsome", ats: auto, slug: [leapsome, leapsomegmbh] }
   - { name: "Camunda", ats: auto, slug: camunda }
   - { name: "Prisma", ats: auto, slug: prisma }
   - { name: "Kenjo", ats: auto, slug: kenjo }
@@ -248,9 +248,9 @@ companies:
   - { name: "Factorial", ats: auto, slug: factorial }
   - { name: "Sanity", ats: auto, slug: sanity }
   - { name: "Framer", ats: auto, slug: framer }
-  - { name: "Raycast", ats: auto, slug: raycast }
+  - { name: "Raycast", ats: auto, slug: [raycast, raycasttechnologies] }
   - { name: "Maze", ats: auto, slug: maze }
-  - { name: "Cal.com", ats: auto, slug: cal }
+  - { name: "Cal.com", ats: auto, slug: [calcom, cal.com, cal] }
   - { name: "Tines", ats: auto, slug: tines }
   - { name: "Weaviate", ats: auto, slug: weaviate }
   - { name: "Tinybird", ats: auto, slug: tinybird }
@@ -277,7 +277,7 @@ companies:
   - { name: "Mentimeter", ats: auto, slug: mentimeter }
   - { name: "Malt", ats: auto, slug: malt }
   - { name: "Paddle", ats: auto, slug: paddle }
-  - { name: "Close", ats: auto, slug: close.io }
+  - { name: "Close", ats: auto, slug: [close, closeio, close.io] }
   - { name: "Help Scout", ats: auto, slug: helpscout }
   - { name: "Ghost", ats: auto, slug: ghost }
   - { name: "Mattermost", ats: auto, slug: mattermost }
