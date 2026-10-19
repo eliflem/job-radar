@@ -20,7 +20,7 @@
  "Choco": "ashby|choco",
  "Forto": "ashby|forto",
  "Enpal": "ashby|enpal",
- "1KOMMA5\u00b0": "personio|1komma5grad",
+ "1KOMMA5°": "personio|1komma5grad",
  "Personio": "personio|personio",
  "Grover": "greenhouse|grover",
  "Yepoda": "ashby|yepoda",
@@ -111,5 +111,6 @@
  "Mattermost": "greenhouse|mattermost",
  "Trade Republic": "greenhouse|traderepublicbank",
  "Moss": "ashby|moss",
- "Close": "ashby|close"
+ "Close": "ashby|close",
+ "Scalable Capital": "smartrecruiters|scalablegmbh"
 }
