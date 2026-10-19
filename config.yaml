@@ -91,8 +91,9 @@ excluded_companies:
   - "Babbel"
 
 # --- Company career pages (public ATS feeds) ---
-# ats: greenhouse | lever | ashby | personio | smartrecruiters | workable | auto
-# slug: the company's board name on that ATS. 'auto' tries every ATS with the slug.
+# ats: greenhouse | lever | ashby | personio | smartrecruiters | workable | recruitee | auto
+# slug: the company's board name on that ATS, or a list of candidates. 'auto' tries every ATS with each slug.
+# For Recruitee a custom careers domain also works as slug (e.g. careers.hostaway.com).
 # Results of auto-detection are cached in data/ats_cache.json and reported in data/ats_report.json.
 companies:
   # Berlin – AI / data
@@ -100,7 +101,7 @@ companies:
   - { name: "n8n", ats: auto, slug: n8n }
   - { name: "Langfuse", ats: auto, slug: langfuse }
   - { name: "Parloa", ats: auto, slug: parloa }
-  - { name: "Black Forest Labs", ats: auto, slug: blackforestlabs }
+  - { name: "Black Forest Labs", ats: auto, slug: [blackforestlabs, bfl, black-forest-labs] }
   - { name: "Merantix", ats: auto, slug: merantix }
   - { name: "Aleph Alpha", ats: auto, slug: alephalpha }
   - { name: "ElevenLabs", ats: auto, slug: elevenlabs }
@@ -113,9 +114,9 @@ companies:
   - { name: "Trade Republic", ats: auto, slug: traderepublic }
   - { name: "Raisin", ats: auto, slug: raisin }
   - { name: "SumUp", ats: auto, slug: sumup }
-  - { name: "Solaris", ats: auto, slug: solarisgroup }
-  - { name: "Scalable Capital", ats: auto, slug: scalablecapital }
-  - { name: "Taxfix", ats: auto, slug: taxfix }
+  - { name: "Solaris", ats: auto, slug: [solarisgroup, solaris, solarisbank, solarisse] }
+  - { name: "Scalable Capital", ats: auto, slug: [scalablecapital, scalable, scalablegmbh, scalable-capital] }
+  - { name: "Taxfix", ats: auto, slug: [taxfix, taxfixgmbh, taxfixse, taxfix-gmbh] }
   - { name: "Qonto", ats: auto, slug: qonto }
   - { name: "Pliant", ats: auto, slug: pliant }
   - { name: "Mondu", ats: auto, slug: mondu }
@@ -126,13 +127,13 @@ companies:
   - { name: "Delivery Hero", ats: auto, slug: deliveryhero }
   - { name: "HelloFresh", ats: auto, slug: hellofresh }
   - { name: "Choco", ats: auto, slug: choco }
-  - { name: "Sennder", ats: auto, slug: sennder }
+  - { name: "Sennder", ats: auto, slug: [sennder, sennder-technologies, senndertechnologies, sennder-gmbh] }
   - { name: "Forto", ats: auto, slug: forto }
   - { name: "Enpal", ats: auto, slug: enpal }
   - { name: "1KOMMA5°", ats: auto, slug: 1komma5grad }
   - { name: "Personio", ats: auto, slug: personio }
   - { name: "Pitch", ats: auto, slug: pitch }
-  - { name: "Clue", ats: auto, slug: clue }
+  - { name: "Clue", ats: auto, slug: [clue, helloclue, biowink] }
   - { name: "Ada Health", ats: auto, slug: adahealth }
   - { name: "HeyJobs", ats: auto, slug: heyjobs }
   - { name: "Bolt", ats: auto, slug: bolt }
@@ -140,7 +141,7 @@ companies:
   - { name: "Wonderbill", ats: auto, slug: wonderbill }
   - { name: "Yepoda", ats: auto, slug: yepoda }
   # Remote-first / remote-friendly worldwide
-  - { name: "Hostaway", ats: auto, slug: hostaway }
+  - { name: "Hostaway", ats: auto, slug: [careers.hostaway.com, hostaway] }
   - { name: "GitLab", ats: auto, slug: gitlab }
   - { name: "Remote", ats: auto, slug: remote }
   - { name: "Deel", ats: auto, slug: deel }

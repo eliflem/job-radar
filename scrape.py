@@ -341,29 +341,51 @@ def ats_workable(slug):
                  description="", ext_id=x.get("shortcode")) for x in r.json()["jobs"]]
 
 
+def ats_recruitee(slug):
+    # slug is either the Recruitee company name or a custom careers domain (e.g. careers.hostaway.com)
+    base = f"https://{slug}" if "." in slug else f"https://{slug}.recruitee.com"
+    r = get(f"{base}/api/offers/")
+    if r.status_code != 200 or "offers" not in r.text[:200]:
+        return None
+    return [dict(title=x.get("title"), url=x.get("careers_url") or f"{base}/o/{x.get('slug')}",
+                 location=x.get("location") or ", ".join(filter(None, [x.get("city"), x.get("country")])),
+                 remote=x.get("remote"), posted=x.get("published_at", ""),
+                 description=(x.get("description") or "") + "\n" + (x.get("requirements") or ""),
+                 ext_id=x.get("id")) for x in r.json().get("offers", [])]
+
+
 ATS = {
     "greenhouse": ats_greenhouse, "lever": ats_lever, "ashby": ats_ashby,
     "personio": ats_personio, "smartrecruiters": ats_smartrecruiters, "workable": ats_workable,
+    "recruitee": ats_recruitee,
 }
 
 
 def collect_companies(cfg, flt: Filters) -> list[dict]:
+    """slug may be one value or a list of candidates; ats may be fixed or 'auto'.
+    The first (ats, slug) pair with open roles wins and is cached in data/ats_cache.json as 'ats|slug'."""
     cache = load_json(ATS_CACHE_FILE, {})
     out, status = [], {}
     for c in cfg.get("companies", []):
-        name, slug, ats = c["name"], str(c["slug"]), c.get("ats", "auto")
-        order = [ats] if ats in ATS else ([cache[name]] if cache.get(name) in ATS else list(ATS))
+        name, ats = c["name"], c.get("ats", "auto")
+        slugs = [str(x) for x in (c["slug"] if isinstance(c["slug"], list) else [c["slug"]])]
+        cached = cache.get(name, "")
+        if "|" in cached and cached.split("|", 1)[0] in ATS:
+            pairs = [tuple(cached.split("|", 1))]
+        else:
+            atss = [ats] if ats in ATS else list(ATS)
+            pairs = [(a, sl) for sl in slugs for a in atss]
         postings, found, empty_hit = None, None, None
-        for a in order:
+        for a, sl in pairs:
             try:
-                res = ATS[a](slug)
+                res = ATS[a](sl)
             except Exception:
                 res = None
             if res:  # a board with open roles wins
-                postings, found = res, a
+                postings, found = res, (a, sl)
                 break
             if res is not None and empty_hit is None:
-                empty_hit = a  # valid-looking but empty (some ATS answer 200 for unknown slugs)
+                empty_hit = (a, sl)  # valid-looking but empty (some ATS answer 200 for unknown slugs)
         if found is None and empty_hit and ats in ATS:
             postings, found = [], empty_hit  # explicitly configured ATS with no open roles today
         if found is None:
@@ -371,17 +393,17 @@ def collect_companies(cfg, flt: Filters) -> list[dict]:
             cache.pop(name, None)
             continue
         if postings:
-            cache[name] = found
+            cache[name] = f"{found[0]}|{found[1]}"
         kept = 0
         for p in postings:
             if not flt.title_ok(p.get("title") or ""):
                 continue
             if not location_plausible(p.get("location") or "", p.get("remote")):
                 continue
-            out.append(job(source=f"career:{found}", company=name, **p))
+            out.append(job(source=f"career:{found[0]}", company=name, **p))
             kept += 1
-        status[name] = f"{found}: {len(postings)} open, {kept} relevant"
-        time.sleep(0.3)
+        status[name] = f"{found[0]}/{found[1]}: {len(postings)} open, {kept} relevant"
+        time.sleep(0.2)
     save_json(ATS_CACHE_FILE, cache)
     report["sources"]["companies"] = status
     return out
