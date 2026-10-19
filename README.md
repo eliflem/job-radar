@@ -10,7 +10,7 @@ Personal daily job finder for product roles (PM, PO, founding PM, EIR, venture b
    - **Bundesagentur für Arbeit Jobbörse** via its public Jobsuche API.
    - **Company career pages** (Greenhouse, Lever, Ashby, Personio, SmartRecruiters, Workable feeds) for the watchlist in `config.yaml`.
 3. Hard filters (title include/exclude, excluded companies) and dedupe against `data/seen.json`.
-4. New candidates land in `data/candidates/YYYY-MM-DD.json`. Run stats in `data/last_run.json`.
+4. New candidates land in `data/candidates/<run time>.json` (one file per run). Run stats in `data/last_run.json`.
 5. A daily **Claude scheduled task** reviews the candidates (language requirements, location/remote rules, fit), adds the matches to the Job Radar table, and reads feedback from the table to tune `config.yaml` and its review notes (`review_rules.md`).
 
 ## Tuning

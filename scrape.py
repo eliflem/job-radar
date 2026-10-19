@@ -416,9 +416,10 @@ def main():
     cutoff = (dt.date.today() - dt.timedelta(days=SEEN_RETENTION_DAYS)).isoformat()
     seen = {k: v for k, v in seen.items() if v >= cutoff}
 
-    out_file = CANDIDATES / f"{TODAY}.json"
-    existing = load_json(out_file, [])  # allow re-runs on the same day
-    save_json(out_file, existing + new)
+    # one file per run, so a second run on the same day is never mistaken for an already-reviewed file
+    out_file = CANDIDATES / f"{dt.datetime.utcnow():%Y-%m-%dT%H%M}.json"
+    if new:
+        save_json(out_file, new)
     save_json(SEEN_FILE, seen)
     report["new_candidates"] = len(new)
     report["collected_after_filters"] = len(collected)
