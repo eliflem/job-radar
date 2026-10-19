@@ -119,6 +119,7 @@ companies:
   - { name: "Qonto", ats: auto, slug: qonto }
   - { name: "Pliant", ats: auto, slug: pliant }
   - { name: "Mondu", ats: auto, slug: mondu }
+  - { name: "Finmid", ats: ashby, slug: finmid.com }
   # Berlin – marketplaces / consumer / B2B SaaS
   - { name: "GetYourGuide", ats: auto, slug: getyourguide }
   - { name: "Contentful", ats: auto, slug: contentful }

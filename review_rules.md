@@ -34,3 +34,4 @@ If the description is missing or ambiguous on language/location, include it and 
 
 ## Learned from feedback
 (Claude appends patterns here, e.g. "👎 agency/consultancy PM roles", "👍 AI-native startups".)
+- 👍 Elif flagged Finmid's "Entrepreneur in Residence (GTM)" as the kind of role she wants: startup EIR / founder-adjacent generalist roles spanning product, GTM and operations count even when they aren't pure PM.
