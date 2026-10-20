@@ -35,3 +35,5 @@ If the description is missing or ambiguous on language/location, include it and 
 ## Learned from feedback
 (Claude appends patterns here, e.g. "👎 agency/consultancy PM roles", "👍 AI-native startups".)
 - 👍 Elif flagged Finmid's "Entrepreneur in Residence (GTM)" as the kind of role she wants: startup EIR / founder-adjacent generalist roles spanning product, GTM and operations count even when they aren't pure PM.
+- 👎 German-language job ads (PAQATO: "job post is in german") — apply rule 3 strictly: if the ad text is in German, skip it even when the title is English.
+- 👍 AI-native product roles (applied to Typeform "AI Product Operations Lead" and Voyfai "Senior Product Manager (Builder)") — hands-on builder / AI product-ops roles at AI-focused companies are a strong fit; rank them up in `why`.
