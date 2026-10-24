@@ -41,3 +41,4 @@ If the description is missing or ambiguous on language/location, include it and 
 - ⚠️ Roles requiring deep ML expertise (NLP, computer vision, recommender systems) are a stretch (Air Apps: "I don't have this") — still include AI PM roles, but flag a hard ML/research requirement in `why`.
 - ⚠️ Temporary / interim / fixed-term contracts (Darwin Recruitment 6-month interim PM: 👍 "içerik okay ama temp" — content fine, but temp) — still include if the role fits, but start `why` with "Temp:" so the contract length is visible.
 - 👍 Marketplace / consumer e-commerce PM roles (Vinted "Marketplace", az "E-Commerce Web & Mobile", Cint "Exchange", AIOS consumer engagement) — a good fit; some US-hours overlap on a fully remote role (AIOS) was fine.
+- 👍 Growth PM / PO roles (Trusted Shops "Senior Product Manager Growth", Nodes & Links "Growth Product Owner") — experimentation-heavy consumer and B2B SaaS growth roles are a good fit; rank them up in `why`.
