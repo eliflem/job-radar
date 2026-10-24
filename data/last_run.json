@@ -9,19 +9,19 @@
    "Black Forest Labs": "ashby/black-forest-labs: 13 open, 0 relevant",
    "Merantix": "personio/merantix: 14 open, 1 relevant",
    "Aleph Alpha": "ashby/alephalpha: 4 open, 0 relevant",
-   "ElevenLabs": "ashby/elevenlabs: 161 open, 5 relevant",
-   "Helsing": "greenhouse/helsing: 159 open, 3 relevant",
+   "ElevenLabs": "ashby/elevenlabs: 159 open, 5 relevant",
+   "Helsing": "greenhouse/helsing: 160 open, 3 relevant",
    "Knowunity": "ashby/knowunity: 6 open, 0 relevant",
    "Tacto": "ashby/tacto: 23 open, 0 relevant",
    "Cognigy": "no open roles found (check slug/ats in config.yaml)",
    "N26": "greenhouse/n26: 39 open, 2 relevant",
    "Trade Republic": "greenhouse/traderepublicbank: 44 open, 0 relevant",
    "Raisin": "greenhouse/raisin: 38 open, 1 relevant",
-   "SumUp": "greenhouse/sumup: 348 open, 1 relevant",
+   "SumUp": "greenhouse/sumup: 349 open, 1 relevant",
    "Solaris": "greenhouse/solarisbank: 24 open, 1 relevant",
    "Scalable Capital": "smartrecruiters/scalablegmbh: 100 open, 2 relevant",
    "Taxfix": "no open roles found (check slug/ats in config.yaml)",
-   "Qonto": "no open roles found (check slug/ats in config.yaml)",
+   "Qonto": "ashby/qonto: 41 open, 2 relevant",
    "Pliant": "ashby/pliant: 32 open, 2 relevant",
    "Mondu": "no open roles found (check slug/ats in config.yaml)",
    "Finmid": "ashby/finmid.com: 7 open, 2 relevant",
@@ -182,12 +182,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 1478,
-   "after_title_filter": 241
+   "raw": 1206,
+   "after_title_filter": 169
   },
-  "linkedin_descriptions_fetched": 20
+  "linkedin_descriptions_fetched": 0
  },
  "errors": [],
- "new_candidates": 32,
- "collected_after_filters": 385
+ "new_candidates": 2,
+ "collected_after_filters": 315
 }
