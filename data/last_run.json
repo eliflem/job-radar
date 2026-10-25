@@ -1,5 +1,5 @@
 {
- "date": "2026-10-24",
+ "date": "2026-10-25",
  "sources": {
   "companies": {
    "DeepL": "ashby/deepl: 9 open, 0 relevant",
@@ -28,12 +28,12 @@
    "GetYourGuide": "greenhouse/getyourguide: 74 open, 5 relevant",
    "Contentful": "greenhouse/contentful: 24 open, 0 relevant",
    "Delivery Hero": "smartrecruiters/deliveryhero: 100 open, 1 relevant",
-   "HelloFresh": "greenhouse/hellofresh: 386 open, 1 relevant",
+   "HelloFresh": "greenhouse/hellofresh: 385 open, 1 relevant",
    "Choco": "ashby/choco: 1 open, 0 relevant",
    "Sennder": "no open roles found (check slug/ats in config.yaml)",
    "Forto": "ashby/forto: 9 open, 0 relevant",
    "Enpal": "ashby/enpal: 160 open, 0 relevant",
-   "1KOMMA5°": "personio/1komma5grad: 300 open, 11 relevant",
+   "1KOMMA5°": "personio/1komma5grad: 301 open, 11 relevant",
    "Personio": "personio/personio: 1 open, 0 relevant",
    "Pitch": "no open roles found (check slug/ats in config.yaml)",
    "Clue": "no open roles found (check slug/ats in config.yaml)",
@@ -58,7 +58,7 @@
    "Hugging Face": "workable/huggingface: 6 open, 0 relevant",
    "Mistral AI": "lever/mistral: 0 open, 0 relevant",
    "PostHog": "ashby/posthog: 10 open, 1 relevant",
-   "Supabase": "ashby/supabase: 59 open, 4 relevant",
+   "Supabase": "ashby/supabase: 61 open, 4 relevant",
    "Linear": "ashby/linear: 34 open, 2 relevant",
    "LivePerson": "greenhouse/liveperson: 4 open, 0 relevant",
    "Langdock": "ashby/langdock: 10 open, 0 relevant",
@@ -105,7 +105,7 @@
    "ResearchGate": "lever/researchgate: 1 open, 0 relevant",
    "HomeToGo": "no open roles found (check slug/ats in config.yaml)",
    "Omio": "smartrecruiters/omio: 2 open, 0 relevant",
-   "Flix": "greenhouse/flix: 126 open, 3 relevant",
+   "Flix": "greenhouse/flix: 128 open, 3 relevant",
    "Vay": "greenhouse/vay: 16 open, 0 relevant",
    "Dott": "no open roles found (check slug/ats in config.yaml)",
    "Flink": "ashby/flink: 2 open, 0 relevant",
@@ -169,7 +169,7 @@
    "Dust": "ashby/dust: 24 open, 0 relevant",
    "Photoroom": "ashby/photoroom: 11 open, 1 relevant",
    "Poolside": "ashby/poolside: 2 open, 0 relevant",
-   "Legora": "ashby/legora: 311 open, 0 relevant",
+   "Legora": "ashby/legora: 310 open, 0 relevant",
    "Mentimeter": "greenhouse/mentimeter: 14 open, 0 relevant",
    "Malt": "lever/malt: 26 open, 0 relevant",
    "Paddle": "ashby/paddle: 17 open, 1 relevant",
@@ -182,12 +182,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 1206,
-   "after_title_filter": 169
+   "raw": 2358,
+   "after_title_filter": 300
   },
-  "linkedin_descriptions_fetched": 0
+  "linkedin_descriptions_fetched": 13
  },
  "errors": [],
- "new_candidates": 2,
- "collected_after_filters": 315
+ "new_candidates": 18,
+ "collected_after_filters": 446
 }
