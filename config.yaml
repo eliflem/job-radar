@@ -90,6 +90,7 @@ title_exclude:
 # Companies to never show
 excluded_companies:
   - "Babbel"
+  - "A11"            # German-language ads (👎 2026-10-26)
 
 # --- Company career pages (public ATS feeds) ---
 # ats: greenhouse | lever | ashby | personio | smartrecruiters | workable | recruitee | auto
