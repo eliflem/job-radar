@@ -2,7 +2,7 @@ name: Daily job scan
 
 on:
   schedule:
-    - cron: "7 11 * * *"   # every day ~12:07 Berlin (CET) / 13:07 (CEST); review runs 16:52 Berlin
+    - cron: "37 4 * * *"   # ~05:37 Berlin (CET); GitHub starts it ~5-6h late, so results land ~11:00-12:30; review runs 13:37 Berlin
   workflow_dispatch: {}      # "Run workflow" button for manual runs
   push:                      # re-scan right after the config or scraper changes
     branches: [main]
