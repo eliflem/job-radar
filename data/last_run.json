@@ -1,15 +1,15 @@
 {
- "date": "2026-10-31",
+ "date": "2026-11-01",
  "sources": {
   "companies": {
    "DeepL": "ashby/deepl: 8 open, 0 relevant",
-   "n8n": "ashby/n8n: 51 open, 3 relevant",
+   "n8n": "ashby/n8n: 50 open, 3 relevant",
    "Langfuse": "no open roles found (check slug/ats in config.yaml)",
    "Parloa": "greenhouse/parloa: 45 open, 2 relevant",
    "Black Forest Labs": "ashby/black-forest-labs: 14 open, 0 relevant",
    "Merantix": "personio/merantix: 9 open, 0 relevant",
    "Aleph Alpha": "ashby/alephalpha: 4 open, 0 relevant",
-   "ElevenLabs": "ashby/elevenlabs: 145 open, 3 relevant",
+   "ElevenLabs": "ashby/elevenlabs: 138 open, 3 relevant",
    "Helsing": "greenhouse/helsing: 160 open, 3 relevant",
    "Knowunity": "ashby/knowunity: 6 open, 0 relevant",
    "Tacto": "ashby/tacto: 23 open, 0 relevant",
@@ -17,11 +17,11 @@
    "N26": "greenhouse/n26: 32 open, 1 relevant",
    "Trade Republic": "greenhouse/traderepublicbank: 50 open, 1 relevant",
    "Raisin": "greenhouse/raisin: 33 open, 0 relevant",
-   "SumUp": "greenhouse/sumup: 357 open, 1 relevant",
-   "Solaris": "greenhouse/solarisbank: 21 open, 0 relevant",
+   "SumUp": "greenhouse/sumup: 358 open, 1 relevant",
+   "Solaris": "greenhouse/solarisbank: 18 open, 0 relevant",
    "Scalable Capital": "smartrecruiters/scalablegmbh: 100 open, 1 relevant",
    "Taxfix": "no open roles found (check slug/ats in config.yaml)",
-   "Qonto": "ashby/qonto: 49 open, 3 relevant",
+   "Qonto": "ashby/qonto: 50 open, 3 relevant",
    "Pliant": "ashby/pliant: 35 open, 3 relevant",
    "Mondu": "no open roles found (check slug/ats in config.yaml)",
    "Finmid": "ashby/finmid.com: 8 open, 2 relevant",
@@ -58,7 +58,7 @@
    "Hugging Face": "workable/huggingface: 6 open, 0 relevant",
    "Mistral AI": "lever/mistral: 0 open, 0 relevant",
    "PostHog": "ashby/posthog: 11 open, 1 relevant",
-   "Supabase": "ashby/supabase: 67 open, 5 relevant",
+   "Supabase": "ashby/supabase: 68 open, 6 relevant",
    "Linear": "ashby/linear: 31 open, 2 relevant",
    "LivePerson": "greenhouse/liveperson: 1 open, 0 relevant",
    "Langdock": "ashby/langdock: 9 open, 0 relevant",
@@ -182,12 +182,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 2274,
-   "after_title_filter": 251
+   "raw": 1333,
+   "after_title_filter": 134
   },
-  "linkedin_descriptions_fetched": 11
+  "linkedin_descriptions_fetched": 5
  },
  "errors": [],
- "new_candidates": 22,
- "collected_after_filters": 384
+ "new_candidates": 6,
+ "collected_after_filters": 268
 }
