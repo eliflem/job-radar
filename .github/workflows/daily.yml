@@ -21,6 +21,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # always scan from the latest main, not the commit that queued the run
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
