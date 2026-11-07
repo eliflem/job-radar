@@ -1,7 +1,6 @@
 {
  "DeepL": "ashby|deepl",
  "n8n": "ashby|n8n",
- "Parloa": "greenhouse|parloa",
  "Merantix": "personio|merantix",
  "Aleph Alpha": "ashby|alephalpha",
  "ElevenLabs": "ashby|elevenlabs",
@@ -12,7 +11,6 @@
  "Raisin": "greenhouse|raisin",
  "SumUp": "greenhouse|sumup",
  "Pliant": "ashby|pliant",
- "GetYourGuide": "greenhouse|getyourguide",
  "Contentful": "greenhouse|contentful",
  "Delivery Hero": "smartrecruiters|deliveryhero",
  "HelloFresh": "greenhouse|hellofresh",
@@ -112,5 +110,7 @@
  "Gelato": "ashby|gelato",
  "Personio": "recruitee|personio",
  "Vivid Money": "personio|vivid",
- "Doctolib": "ashby|doctolib"
+ "Doctolib": "ashby|doctolib",
+ "Pencil": "ashby|pencil",
+ "Formula": "ashby|formula"
 }
