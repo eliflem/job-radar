@@ -5,7 +5,7 @@
    "DeepL": "ashby/deepl: 8 open, 0 relevant",
    "n8n": "ashby/n8n: 48 open, 4 relevant",
    "Langfuse": "no open roles found (check slug/ats in config.yaml)",
-   "Parloa": "no open roles found (check slug/ats in config.yaml)",
+   "Parloa": "ashby/parloa: 44 open, 2 relevant",
    "Black Forest Labs": "ashby/black-forest-labs: 15 open, 0 relevant",
    "Merantix": "personio/merantix: 9 open, 0 relevant",
    "Aleph Alpha": "ashby/alephalpha: 4 open, 0 relevant",
@@ -112,7 +112,7 @@
    "everphone": "personio/everphone: 9 open, 2 relevant",
    "Zenjob": "ashby/zenjob: 11 open, 1 relevant",
    "Seven Education": "no open roles found (check slug/ats in config.yaml)",
-   "Doctolib": "ashby/doctolib: 150 open, 5 relevant",
+   "Doctolib": "ashby/doctolib: 152 open, 5 relevant",
    "Adjust": "recruitee/adjust: 30 open, 0 relevant",
    "Mobimeo": "personio/mobimeo: 2 open, 0 relevant",
    "Leapsome": "no open roles found (check slug/ats in config.yaml)",
@@ -178,20 +178,27 @@
    "Ghost": "greenhouse/ghost: 5 open, 0 relevant",
    "Mattermost": "greenhouse/mattermost: 11 open, 0 relevant",
    "Pencil": "ashby/pencil: 28 open, 2 relevant",
-   "Formula": "ashby/formula: 1 open, 1 relevant"
+   "Formula": "ashby/formula: 1 open, 1 relevant",
+   "Storyblok": "greenhouse/storyblok: 11 open, 0 relevant",
+   "Hygraph": "recruitee/hygraph: 1 open, 0 relevant",
+   "Bloomreach": "greenhouse/bloomreach: 69 open, 0 relevant",
+   "Contentstack": "greenhouse/contentstack: 11 open, 0 relevant",
+   "Kontent.ai": "no open roles found (check slug/ats in config.yaml)",
+   "Magnolia": "greenhouse/magnolia: 18 open, 0 relevant",
+   "Prismic": "recruitee/prismic: 7 open, 0 relevant",
+   "Strapi": "no open roles found (check slug/ats in config.yaml)",
+   "Umbraco": "no open roles found (check slug/ats in config.yaml)"
   },
   "arbeitsagentur": {
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 3293,
-   "after_title_filter": 324
+   "raw": 3291,
+   "after_title_filter": 327
   },
-  "linkedin_descriptions_fetched": 26
+  "linkedin_descriptions_fetched": 3
  },
- "errors": [
-  "arbeitsagentur {'was': 'Produktmanager', 'wo': 'Berlin', 'umkreis': 25}: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
- ],
- "new_candidates": 39,
- "collected_after_filters": 466
+ "errors": [],
+ "new_candidates": 3,
+ "collected_after_filters": 471
 }
