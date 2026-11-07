@@ -20,6 +20,8 @@ search_terms:
   - "technical project manager"
   - "product operations"
   - "growth product manager"
+  - "product builder"
+  - "AI product builder"
 
 # Each search runs once per location below
 board_locations:
@@ -28,6 +30,8 @@ board_locations:
   - name: "Germany"             # remote roles anywhere in Germany
     remote_only: true
   - name: "European Union"      # remote roles in Europe
+    remote_only: true
+  - name: "EMEA"                # "EMEA - Remote" roles (e.g. Pencil) — added 2026-11-07
     remote_only: true
   - name: "Worldwide"           # fully remote, anywhere
     remote_only: true
@@ -63,6 +67,9 @@ title_include:
   - 'product op(eration)?s'
   - 'produktmanager'
   - 'product strategist'
+  - 'product builder'
+  - 'builder pm'
+  - 'builder mindset'
 
 title_exclude:
   - '\bintern\b'
@@ -283,3 +290,6 @@ companies:
   - { name: "Help Scout", ats: auto, slug: helpscout }
   - { name: "Ghost", ats: auto, slug: ghost }
   - { name: "Mattermost", ats: auto, slug: mattermost }
+  # EMEA/EU-remote AI product & product-builder roles (👍 2026-11-07)
+  - { name: "Pencil", ats: ashby, slug: pencil }
+  - { name: "Formula", ats: ashby, slug: formula }
