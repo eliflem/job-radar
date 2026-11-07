@@ -293,3 +293,13 @@ companies:
   # EMEA/EU-remote AI product & product-builder roles (👍 2026-11-07)
   - { name: "Pencil", ats: ashby, slug: pencil }
   - { name: "Formula", ats: ashby, slug: formula }
+  # Headless CMS / content & digital-experience platforms (added 2026-11-07)
+  - { name: "Storyblok", ats: auto, slug: [storyblok, storyblokgmbh] }
+  - { name: "Hygraph", ats: auto, slug: [hygraph, graphcms] }
+  - { name: "Bloomreach", ats: auto, slug: [bloomreach, bloomreachinc] }
+  - { name: "Contentstack", ats: auto, slug: [contentstack, contentstackinc] }
+  - { name: "Kontent.ai", ats: auto, slug: [kontentai, kontent-ai, kontent, kentico] }
+  - { name: "Magnolia", ats: auto, slug: [magnolia, magnoliacms, magnolia-cms, magnoliainternational] }
+  - { name: "Prismic", ats: auto, slug: [prismic, prismicio, prismic-io] }
+  - { name: "Strapi", ats: auto, slug: [strapi, strapi-solutions, strapisolutions] }
+  - { name: "Umbraco", ats: auto, slug: [umbraco, umbracohq, umbraco-hq] }
