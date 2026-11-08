@@ -293,6 +293,7 @@ companies:
   # EMEA/EU-remote AI product & product-builder roles (👍 2026-11-07)
   - { name: "Pencil", ats: ashby, slug: pencil }
   - { name: "Formula", ats: ashby, slug: formula }
+  - { name: "Pennylane", ats: auto, slug: [pennylane, pennylane-tech] }   # 👍 AI Studio Builder PM, 2026-11-07
   # Headless CMS / content & digital-experience platforms (added 2026-11-07)
   - { name: "Storyblok", ats: auto, slug: [storyblok, storyblokgmbh] }
   - { name: "Hygraph", ats: auto, slug: [hygraph, graphcms] }
