@@ -1,15 +1,15 @@
 {
- "date": "2026-11-07",
+ "date": "2026-11-08",
  "sources": {
   "companies": {
    "DeepL": "ashby/deepl: 8 open, 0 relevant",
    "n8n": "ashby/n8n: 48 open, 4 relevant",
    "Langfuse": "no open roles found (check slug/ats in config.yaml)",
-   "Parloa": "ashby/parloa: 44 open, 2 relevant",
+   "Parloa": "ashby/parloa: 43 open, 2 relevant",
    "Black Forest Labs": "ashby/black-forest-labs: 15 open, 0 relevant",
    "Merantix": "personio/merantix: 9 open, 0 relevant",
    "Aleph Alpha": "ashby/alephalpha: 4 open, 0 relevant",
-   "ElevenLabs": "ashby/elevenlabs: 139 open, 3 relevant",
+   "ElevenLabs": "ashby/elevenlabs: 137 open, 3 relevant",
    "Helsing": "greenhouse/helsing: 160 open, 3 relevant",
    "Knowunity": "ashby/knowunity: 6 open, 0 relevant",
    "Tacto": "ashby/tacto: 20 open, 0 relevant",
@@ -17,8 +17,8 @@
    "N26": "greenhouse/n26: 36 open, 2 relevant",
    "Trade Republic": "greenhouse/traderepublicbank: 45 open, 0 relevant",
    "Raisin": "greenhouse/raisin: 31 open, 1 relevant",
-   "SumUp": "greenhouse/sumup: 343 open, 1 relevant",
-   "Solaris": "greenhouse/solarisbank: 18 open, 0 relevant",
+   "SumUp": "greenhouse/sumup: 342 open, 1 relevant",
+   "Solaris": "greenhouse/solarisbank: 19 open, 0 relevant",
    "Scalable Capital": "smartrecruiters/scalablegmbh: 100 open, 1 relevant",
    "Taxfix": "no open roles found (check slug/ats in config.yaml)",
    "Qonto": "ashby/qonto: 53 open, 3 relevant",
@@ -151,7 +151,7 @@
    "Weaviate": "ashby/weaviate: 2 open, 0 relevant",
    "Tinybird": "lever/tinybird: 2 open, 0 relevant",
    "Grafana Labs": "greenhouse/grafanalabs: 134 open, 7 relevant",
-   "Elastic": "greenhouse/elastic: 423 open, 0 relevant",
+   "Elastic": "greenhouse/elastic: 425 open, 0 relevant",
    "Vercel": "greenhouse/vercel: 87 open, 0 relevant",
    "Clerk": "ashby/clerk: 2 open, 0 relevant",
    "Railway": "ashby/railway: 7 open, 0 relevant",
@@ -193,12 +193,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 3291,
-   "after_title_filter": 325
+   "raw": 1634,
+   "after_title_filter": 146
   },
-  "linkedin_descriptions_fetched": 3
+  "linkedin_descriptions_fetched": 11
  },
  "errors": [],
- "new_candidates": 3,
- "collected_after_filters": 469
+ "new_candidates": 11,
+ "collected_after_filters": 290
 }
