@@ -179,6 +179,7 @@
    "Mattermost": "greenhouse/mattermost: 11 open, 0 relevant",
    "Pencil": "ashby/pencil: 28 open, 2 relevant",
    "Formula": "ashby/formula: 1 open, 1 relevant",
+   "Pennylane": "ashby/pennylane: 203 open, 4 relevant",
    "Storyblok": "greenhouse/storyblok: 11 open, 0 relevant",
    "Hygraph": "recruitee/hygraph: 1 open, 0 relevant",
    "Bloomreach": "greenhouse/bloomreach: 69 open, 0 relevant",
@@ -193,12 +194,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 1634,
-   "after_title_filter": 146
+   "raw": 1863,
+   "after_title_filter": 149
   },
-  "linkedin_descriptions_fetched": 11
+  "linkedin_descriptions_fetched": 3
  },
  "errors": [],
- "new_candidates": 11,
- "collected_after_filters": 290
+ "new_candidates": 4,
+ "collected_after_filters": 297
 }
