@@ -194,12 +194,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 3266,
-   "after_title_filter": 392
+   "raw": 3143,
+   "after_title_filter": 355
   },
-  "linkedin_descriptions_fetched": 15
+  "linkedin_descriptions_fetched": 0
  },
  "errors": [],
- "new_candidates": 22,
- "collected_after_filters": 551
+ "new_candidates": 0,
+ "collected_after_filters": 514
 }
