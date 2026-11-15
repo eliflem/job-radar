@@ -1,12 +1,12 @@
 {
- "date": "2026-11-14",
+ "date": "2026-11-15",
  "sources": {
   "companies": {
    "DeepL": "ashby/deepl: 7 open, 0 relevant",
    "n8n": "ashby/n8n: 55 open, 4 relevant",
    "Langfuse": "no open roles found (check slug/ats in config.yaml)",
    "Parloa": "ashby/parloa: 45 open, 2 relevant",
-   "Black Forest Labs": "ashby/black-forest-labs: 13 open, 0 relevant",
+   "Black Forest Labs": "ashby/black-forest-labs: 16 open, 0 relevant",
    "Merantix": "personio/merantix: 8 open, 0 relevant",
    "Aleph Alpha": "ashby/alephalpha: 4 open, 0 relevant",
    "ElevenLabs": "ashby/elevenlabs: 128 open, 2 relevant",
@@ -15,9 +15,9 @@
    "Tacto": "ashby/tacto: 20 open, 0 relevant",
    "Cognigy": "no open roles found (check slug/ats in config.yaml)",
    "N26": "greenhouse/n26: 34 open, 1 relevant",
-   "Trade Republic": "greenhouse/traderepublicbank: 39 open, 0 relevant",
+   "Trade Republic": "greenhouse/traderepublicbank: 38 open, 0 relevant",
    "Raisin": "greenhouse/raisin: 29 open, 1 relevant",
-   "SumUp": "greenhouse/sumup: 329 open, 1 relevant",
+   "SumUp": "greenhouse/sumup: 326 open, 1 relevant",
    "Solaris": "greenhouse/solarisbank: 19 open, 0 relevant",
    "Scalable Capital": "smartrecruiters/scalablegmbh: 100 open, 2 relevant",
    "Taxfix": "no open roles found (check slug/ats in config.yaml)",
@@ -44,7 +44,7 @@
    "Wonderbill": "no open roles found (check slug/ats in config.yaml)",
    "Yepoda": "ashby/yepoda: 8 open, 0 relevant",
    "Hostaway": "recruitee/careers.hostaway.com: 10 open, 1 relevant",
-   "GitLab": "greenhouse/gitlab: 251 open, 13 relevant",
+   "GitLab": "greenhouse/gitlab: 254 open, 13 relevant",
    "Remote": "greenhouse/remote: 2 open, 0 relevant",
    "Deel": "no open roles found (check slug/ats in config.yaml)",
    "Zapier": "ashby/zapier: 10 open, 0 relevant",
@@ -194,12 +194,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 3143,
-   "after_title_filter": 355
+   "raw": 3215,
+   "after_title_filter": 301
   },
-  "linkedin_descriptions_fetched": 0
+  "linkedin_descriptions_fetched": 7
  },
  "errors": [],
- "new_candidates": 0,
- "collected_after_filters": 514
+ "new_candidates": 7,
+ "collected_after_filters": 460
 }
