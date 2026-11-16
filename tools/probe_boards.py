@@ -1,25 +1,14 @@
-"""Probe feed URLs for remote job boards (debugging)."""
+"""Inspect Remotive's category page structure (debugging)."""
 import re, requests
 UA = {"User-Agent": "Mozilla/5.0 (job-radar personal job search)"}
-urls = [
- "https://remotive.com/remote-jobs/feed/product",
- "https://remotive.com/remote-jobs/feed",
- "https://remotive.com/feed",
- "https://remotive.com/remote-jobs/product/feed",
- "https://remotive.com/api/remote-jobs?category=product&limit=200",
- "https://remotive.com/remote-jobs/product",
- "https://jobicy.com/api/v2/remote-jobs?count=100&industry=management",
- "https://jobicy.com/api/v2/remote-jobs?count=100&industry=product",
- "https://jobicy.com/feed/job_feed?job_categories=product-operations",
-]
-for u in urls:
-    try:
-        r = requests.get(u, headers=UA, timeout=30)
-        body = r.text
-        titles = re.findall(r"<title>(.*?)</title>", body)[:6] or re.findall(r'"(?:title|jobTitle)":\s*"(.*?)"', body)[:6]
-        print(f"== {u}\n   {r.status_code} {r.headers.get('content-type')} len={len(body)} items~{body.count('<item>') or body.count('jobTitle') or body.count('\"title\"')}")
-        print("   ", titles)
-        if "remote-jobs/product" in u and "html" in (r.headers.get("content-type") or ""):
-            print("   job links:", len(set(re.findall(r'href="(/remote-jobs/product/[^"]+)"', body))), "next-data:", "__NEXT_DATA__" in body, "ld+json:", body.count("application/ld+json"))
-    except Exception as e:
-        print("==", u, "ERROR", e)
+r = requests.get("https://remotive.com/remote-jobs/product", headers=UA, timeout=30)
+b = r.text
+for m in list(re.finditer(r'"title"', b))[:3]:
+    print("CTX:", b[max(0, m.start()-300): m.start()+500].replace("\n", " "))
+    print("-----")
+links = sorted(set(re.findall(r'href="(https://remotive\.com/remote-jobs/[a-z-]+/[^"]+)"', b)))
+print("abs links", len(links), links[:5])
+rel = sorted(set(re.findall(r'href="(/remote-jobs/[a-z-]+/[^"#?]+)"', b)))
+print("rel links", len(rel), rel[:5])
+print("scripts:", re.findall(r'<script[^>]*(?:id|type)="([^"]+)"', b)[:10])
+print("load-more/api hints:", sorted(set(re.findall(r'(/api/[A-Za-z0-9/_-]+)', b)))[:15])
