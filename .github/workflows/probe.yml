@@ -1,0 +1,8 @@
+name: Probe remote boards
+on: { workflow_dispatch: {} }
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install requests && python tools/probe_boards.py
