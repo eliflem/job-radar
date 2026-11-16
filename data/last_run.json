@@ -9,7 +9,7 @@
    "Black Forest Labs": "ashby/black-forest-labs: 16 open, 0 relevant",
    "Merantix": "personio/merantix: 8 open, 0 relevant",
    "Aleph Alpha": "ashby/alephalpha: 4 open, 0 relevant",
-   "ElevenLabs": "ashby/elevenlabs: 124 open, 2 relevant",
+   "ElevenLabs": "ashby/elevenlabs: 123 open, 2 relevant",
    "Helsing": "greenhouse/helsing: 171 open, 4 relevant",
    "Knowunity": "ashby/knowunity: 5 open, 0 relevant",
    "Tacto": "ashby/tacto: 20 open, 0 relevant",
@@ -44,7 +44,7 @@
    "Wonderbill": "no open roles found (check slug/ats in config.yaml)",
    "Yepoda": "ashby/yepoda: 8 open, 0 relevant",
    "Hostaway": "recruitee/careers.hostaway.com: 10 open, 1 relevant",
-   "GitLab": "greenhouse/gitlab: 256 open, 13 relevant",
+   "GitLab": "greenhouse/gitlab: 254 open, 13 relevant",
    "Remote": "greenhouse/remote: 2 open, 0 relevant",
    "Deel": "no open roles found (check slug/ats in config.yaml)",
    "Zapier": "ashby/zapier: 10 open, 0 relevant",
@@ -160,7 +160,7 @@
    "Mews": "no open roles found (check slug/ats in config.yaml)",
    "Pipedrive": "no open roles found (check slug/ats in config.yaml)",
    "Teamtailor": "no open roles found (check slug/ats in config.yaml)",
-   "Preply": "ashby/preply: 120 open, 14 relevant",
+   "Preply": "ashby/preply: 121 open, 14 relevant",
    "Brainly": "ashby/brainly: 1 open, 0 relevant",
    "Docplanner": "ashby/docplanner: 41 open, 4 relevant",
    "Bitpanda": "greenhouse/bitpanda: 44 open, 2 relevant",
@@ -191,10 +191,10 @@
    "Umbraco": "no open roles found (check slug/ats in config.yaml)"
   },
   "remote_boards": {
-   "remotive": "80 listings, 0 relevant",
+   "remotive": "50 listings, 8 relevant",
    "remoteok": "172 listings, 43 relevant",
    "weworkremotely": "96 listings, 5 relevant",
-   "jobicy": "101 listings, 0 relevant",
+   "jobicy": "100 listings, 12 relevant",
    "himalayas": "400 listings, 220 relevant",
    "workingnomads": "34 listings, 0 relevant"
   },
@@ -202,14 +202,12 @@
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 3209,
-   "after_title_filter": 243
+   "raw": 3169,
+   "after_title_filter": 241
   },
-  "linkedin_descriptions_fetched": 4
+  "linkedin_descriptions_fetched": 0
  },
- "errors": [
-  "weworkremotely remote-business-exec-management-jobs: no element found: line 1, column 0"
- ],
- "new_candidates": 62,
- "collected_after_filters": 668
+ "errors": [],
+ "new_candidates": 14,
+ "collected_after_filters": 686
 }
