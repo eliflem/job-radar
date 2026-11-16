@@ -442,12 +442,30 @@ def remote_location_ok(location: str) -> bool:
 
 
 def rb_remotive(category):
-    r = get("https://remotive.com/api/remote-jobs", params={"category": category})
-    r.raise_for_status()
-    return [dict(company=x.get("company_name"), title=x.get("title"), url=x.get("url"),
-                 location=x.get("candidate_required_location") or "", remote=True,
-                 posted=x.get("publication_date", ""), description=x.get("description", ""),
-                 ext_id=x.get("id")) for x in r.json().get("jobs", [])]
+    """Remotive's free API only returns ~16 jobs, so read the search results its category pages embed."""
+    out, seen_ids = [], set()
+    for page in range(1, 6):
+        r = get(f"https://remotive.com/remote-jobs/{category}", params={"page": page} if page > 1 else None)
+        if r.status_code != 200:
+            break
+        m = re.search(r"window\.__INITIAL_SEARCH_RESULTS__\s*=\s*", r.text)
+        if not m:
+            break
+        data, _ = json.JSONDecoder().raw_decode(r.text, m.end())
+        hits = [h for res in data.get("results", []) for h in res.get("hits", [])]
+        fresh = [h for h in hits if h.get("id") not in seen_ids]
+        if not fresh:
+            break
+        for x in fresh:
+            seen_ids.add(x.get("id"))
+            page_url = next((v for v in x.values() if isinstance(v, str) and v.startswith("https://remotive.com/remote/jobs/")), None)
+            out.append(dict(company=x.get("company_name"), title=x.get("title"), url=page_url or x.get("url"),
+                            location=", ".join(x.get("locations") or []) or "Worldwide", remote=True,
+                            posted=x.get("discovered_on", ""),
+                            description=x.get("description") or ("Skills: " + ", ".join(x.get("skills") or [])),
+                            ext_id=x.get("id")))
+        time.sleep(1.5)
+    return out
 
 
 def rb_remoteok(tag):
@@ -475,8 +493,8 @@ def rb_weworkremotely(feed):
     return out
 
 
-def rb_jobicy(tag):
-    r = get("https://jobicy.com/api/v2/remote-jobs", params={"count": 100, "tag": tag})
+def rb_jobicy(industry):
+    r = get("https://jobicy.com/api/v2/remote-jobs", params={"count": 100, "industry": industry})
     r.raise_for_status()
     return [dict(company=x.get("companyName"), title=x.get("jobTitle"), url=x.get("url"),
                  location=x.get("jobGeo") or "", remote=True, posted=x.get("pubDate", ""),

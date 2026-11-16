@@ -42,10 +42,10 @@ sites: ["linkedin", "indeed", "google"]
 # --- Remote job boards (public APIs / RSS feeds) ---
 # Every listing is remote; regions limited to the Americas/APAC are dropped before review.
 remote_boards:
-  remotive: [product, project-management, business, data, all-others]
+  remotive: [product, project-management]   # category pages; the free API only returns ~16 jobs
   remoteok: [product, product-manager, project-manager]
-  weworkremotely: [remote-product-jobs, remote-management-and-finance-jobs, remote-business-exec-management-jobs]
-  jobicy: [product, product-manager, project-manager]
+  weworkremotely: [remote-product-jobs, remote-management-and-finance-jobs]
+  jobicy: [management]   # Jobicy's Product & Operations industry
   himalayas: ["product manager", "product owner", "chief of staff", "entrepreneur in residence"]
   workingnomads: [all]
 
