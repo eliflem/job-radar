@@ -5,6 +5,14 @@ You are running Elif's daily Job Radar review. Work quietly and finish with a sh
 Artifact (the table Elif uses): https://claude.ai/artifact/AY7ZUbNJnguHpBF6JGLmSW
 Repo: eliflem/job-radar (cloned at the path the add_repo result gives)
 
+## 0. Make sure today's scan has landed
+GitHub often starts the scheduled scan hours late. Before reviewing:
+- `git pull`, then check `git log --since=midnight --format=%s origin/main` for a commit named `scan <today's UTC date>`.
+- If there is none: write the current UTC time into `.scan-request`, commit ("Request scan") and push. That push starts
+  the scan workflow within a minute or two. Then poll (`git fetch` every 60 s, in a background loop with an until-condition,
+  up to 60 minutes) until a new `scan …` commit appears, and `git pull`.
+- If no scan lands within 60 minutes, continue with whatever unprocessed files exist and say so in the summary.
+
 ## 1. Load state
 - Read `review_rules.md` (the judgment rules) and `config.yaml`.
 - Read the artifact database with the ArtifactData tool:
@@ -51,5 +59,6 @@ companies "not found"), fix what you can in `config.yaml` (e.g. a company's ATS 
 page), push, and mention it in the summary.
 
 ## 6. Summary
+If zero roles were added, say why in one line (no new candidates, all failed the rules — name the main reasons — or the scan didn't land).
 Finish with 2–4 lines: how many new roles were added (name the 2–3 strongest), how many were skipped and the main
 reasons, and anything you changed from feedback. If nothing new passed, say so in one line.

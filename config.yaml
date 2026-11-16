@@ -39,6 +39,16 @@ board_locations:
 results_per_search: 40
 sites: ["linkedin", "indeed", "google"]
 
+# --- Remote job boards (public APIs / RSS feeds) ---
+# Every listing is remote; regions limited to the Americas/APAC are dropped before review.
+remote_boards:
+  remotive: [product, project-management, business, data, all-others]
+  remoteok: [product, product-manager, project-manager]
+  weworkremotely: [remote-product-jobs, remote-management-and-finance-jobs, remote-business-exec-management-jobs]
+  jobicy: [product, product-manager, project-manager]
+  himalayas: ["product manager", "product owner", "chief of staff", "entrepreneur in residence"]
+  workingnomads: [all]
+
 # --- Bundesagentur für Arbeit Jobbörse ---
 arbeitsagentur:
   enabled: true

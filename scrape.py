@@ -423,6 +423,127 @@ def collect_companies(cfg, flt: Filters) -> list[dict]:
     return out
 
 
+
+# ---------------------------------------------------------------- remote job boards (Remotive & co.)
+NON_EU_ONLY = re.compile(
+    r"^\s*(usa?|united states|us only|usa only|canada|north america|americas|latam|latin america|"
+    r"brazil|mexico|india|apac|asia|australia|new zealand|philippines|us\s*/\s*canada|us,?\s*canada|"
+    r"us time ?zones?|u\.s\.|uk only|united kingdom only)\b[^,;]*$", re.I)
+OPEN_TO_EUROPE = re.compile(r"worldwide|anywhere|global|europe|\beu\b|emea|germany|berlin|cet|cest|gmt\+?[0-3]?\b|utc\+?[0-3]?\b", re.I)
+
+
+def remote_location_ok(location: str) -> bool:
+    """Cheap prefilter: drop remote jobs explicitly limited to non-European regions. Claude judges the rest."""
+    loc = (location or "").strip()
+    if not loc or OPEN_TO_EUROPE.search(loc):
+        return True
+    parts = [x for x in re.split(r"[,;/|]| or ", loc) if x.strip()]
+    return not all(NON_EU_ONLY.match(x) for x in parts)
+
+
+def rb_remotive(category):
+    r = get("https://remotive.com/api/remote-jobs", params={"category": category})
+    r.raise_for_status()
+    return [dict(company=x.get("company_name"), title=x.get("title"), url=x.get("url"),
+                 location=x.get("candidate_required_location") or "", remote=True,
+                 posted=x.get("publication_date", ""), description=x.get("description", ""),
+                 ext_id=x.get("id")) for x in r.json().get("jobs", [])]
+
+
+def rb_remoteok(tag):
+    r = get("https://remoteok.com/api", params={"tag": tag} if tag else None)
+    r.raise_for_status()
+    return [dict(company=x.get("company"), title=x.get("position"), url=x.get("url") or x.get("apply_url"),
+                 location=x.get("location") or "", remote=True, posted=x.get("date", ""),
+                 description=x.get("description", ""), ext_id=x.get("id"))
+            for x in r.json() if isinstance(x, dict) and x.get("position")]
+
+
+def rb_weworkremotely(feed):
+    r = get(f"https://weworkremotely.com/categories/{feed}.rss")
+    r.raise_for_status()
+    root = ET.fromstring(r.content)
+    out = []
+    for it in root.iter("item"):
+        raw = it.findtext("title") or ""
+        company, _, title = raw.partition(":")
+        if not title:
+            company, title = "", raw
+        out.append(dict(company=company.strip(), title=title.strip(), url=it.findtext("link"),
+                        location=it.findtext("region") or "", remote=True, posted=it.findtext("pubDate") or "",
+                        description=it.findtext("description") or "", ext_id=it.findtext("guid") or it.findtext("link")))
+    return out
+
+
+def rb_jobicy(tag):
+    r = get("https://jobicy.com/api/v2/remote-jobs", params={"count": 100, "tag": tag})
+    r.raise_for_status()
+    return [dict(company=x.get("companyName"), title=x.get("jobTitle"), url=x.get("url"),
+                 location=x.get("jobGeo") or "", remote=True, posted=x.get("pubDate", ""),
+                 description=x.get("jobDescription", ""), ext_id=x.get("id")) for x in r.json().get("jobs", [])]
+
+
+def rb_himalayas(query):
+    out = []
+    for offset in range(0, 100, 20):
+        r = get("https://himalayas.app/jobs/api/search", params={"q": query, "offset": offset, "limit": 20})
+        if r.status_code != 200:
+            break
+        jobs = r.json().get("jobs", [])
+        for x in jobs:
+            loc = ", ".join(x.get("locationRestrictions") or []) or "Worldwide"
+            out.append(dict(company=x.get("companyName"), title=x.get("title"),
+                            url=x.get("applicationLink") or x.get("guid"), location=loc, remote=True,
+                            posted=str(x.get("pubDate", "")), description=x.get("description", ""),
+                            ext_id=x.get("guid") or x.get("applicationLink")))
+        if len(jobs) < 20:
+            break
+        time.sleep(1)
+    return out
+
+
+def rb_workingnomads(_):
+    r = get("https://www.workingnomads.com/api/exposed_jobs/")
+    r.raise_for_status()
+    return [dict(company=x.get("company_name"), title=x.get("title"), url=x.get("url"),
+                 location=x.get("location") or "", remote=True, posted=x.get("pub_date", ""),
+                 description=x.get("description", ""), ext_id=x.get("url")) for x in r.json()]
+
+
+REMOTE_BOARDS = {
+    "remotive": rb_remotive, "remoteok": rb_remoteok, "weworkremotely": rb_weworkremotely,
+    "jobicy": rb_jobicy, "himalayas": rb_himalayas, "workingnomads": rb_workingnomads,
+}
+
+
+def collect_remote_boards(cfg, flt: Filters) -> list[dict]:
+    out, status = [], {}
+    for board, queries in (cfg.get("remote_boards") or {}).items():
+        fn = REMOTE_BOARDS.get(board)
+        if not fn:
+            continue
+        raw = kept = 0
+        for q in queries or [None]:
+            try:
+                postings = fn(q)
+            except Exception as e:
+                report["errors"].append(f"{board} {q}: {e}"[:300])
+                continue
+            raw += len(postings)
+            for p in postings:
+                if not flt.title_ok(p.get("title") or "") or not flt.company_ok(p.get("company") or ""):
+                    continue
+                if not remote_location_ok(p.get("location") or ""):
+                    continue
+                company = p.pop("company") or ""
+                out.append(job(source=board, company=company, **p))
+                kept += 1
+            time.sleep(1)
+        status[board] = f"{raw} listings, {kept} relevant"
+    report["sources"]["remote_boards"] = status
+    return out
+
+
 # ---------------------------------------------------------------- main
 def main():
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
@@ -430,7 +551,7 @@ def main():
     seen = load_json(SEEN_FILE, {})
 
     collected = []
-    for fn in (collect_companies, collect_arbeitsagentur, collect_boards):
+    for fn in (collect_companies, collect_remote_boards, collect_arbeitsagentur, collect_boards):
         try:
             collected += fn(cfg, flt)
         except Exception as e:

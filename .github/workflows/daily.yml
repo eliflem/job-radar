@@ -2,11 +2,12 @@ name: Daily job scan
 
 on:
   schedule:
-    - cron: "37 4 * * *"   # ~05:37 Berlin (CET); GitHub starts it ~5-6h late, so results land ~11:00-12:30; review runs 13:37 Berlin
+    - cron: "17 1 * * *"   # ~02:17 Berlin (CET). GitHub often starts scheduled runs hours late; the daily review
+                           # also requests a scan itself (via .scan-request) if none has landed today.
   workflow_dispatch: {}      # "Run workflow" button for manual runs
   push:                      # re-scan right after the config or scraper changes
     branches: [main]
-    paths: ["config.yaml", "scrape.py"]
+    paths: ["config.yaml", "scrape.py", ".scan-request"]
 
 permissions:
   contents: write

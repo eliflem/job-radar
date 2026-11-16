@@ -28,6 +28,12 @@ Based in Berlin, authorized to work in Germany. Languages: English and Turkish o
 5. **Not already in the table** (same company + essentially the same title).
 6. **Never**: Babbel (current employer).
 
+## Remote job boards
+Candidates with source `remotive`, `remoteok`, `weworkremotely`, `jobicy`, `himalayas` or `workingnomads` are always remote.
+Judge them on rule 4 by the location/region text and the description: include "Worldwide", "Anywhere", Europe, EMEA, EU,
+Germany or CET-friendly roles; skip roles limited to one non-EU country (US, UK, Canada, India…) unless the description says
+Germany-based people are eligible. US-hours roles follow the working-hours line below.
+
 ## When unsure
 If the description is missing or ambiguous on language/location, include it and add a short note in the
 `why` field (e.g. "No description — check language"). Missing a good job is worse than one extra row.
