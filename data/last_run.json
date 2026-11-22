@@ -1,5 +1,5 @@
 {
- "date": "2026-11-21",
+ "date": "2026-11-22",
  "sources": {
   "companies": {
    "DeepL": "ashby/deepl: 10 open, 0 relevant",
@@ -9,7 +9,7 @@
    "Black Forest Labs": "ashby/black-forest-labs: 18 open, 0 relevant",
    "Merantix": "personio/merantix: 8 open, 0 relevant",
    "Aleph Alpha": "ashby/alephalpha: 6 open, 0 relevant",
-   "ElevenLabs": "ashby/elevenlabs: 122 open, 2 relevant",
+   "ElevenLabs": "ashby/elevenlabs: 121 open, 2 relevant",
    "Helsing": "greenhouse/helsing: 175 open, 4 relevant",
    "Knowunity": "ashby/knowunity: 5 open, 0 relevant",
    "Tacto": "ashby/tacto: 27 open, 0 relevant",
@@ -28,7 +28,7 @@
    "GetYourGuide": "ashby/getyourguide: 73 open, 6 relevant",
    "Contentful": "greenhouse/contentful: 50 open, 0 relevant",
    "Delivery Hero": "smartrecruiters/deliveryhero: 100 open, 0 relevant",
-   "HelloFresh": "greenhouse/hellofresh: 377 open, 1 relevant",
+   "HelloFresh": "greenhouse/hellofresh: 375 open, 1 relevant",
    "Choco": "ashby/choco: 6 open, 1 relevant",
    "Sennder": "no open roles found (check slug/ats in config.yaml)",
    "Forto": "ashby/forto: 11 open, 0 relevant",
@@ -105,7 +105,7 @@
    "ResearchGate": "lever/researchgate: 1 open, 0 relevant",
    "HomeToGo": "no open roles found (check slug/ats in config.yaml)",
    "Omio": "smartrecruiters/omio: 2 open, 0 relevant",
-   "Flix": "greenhouse/flix: 187 open, 2 relevant",
+   "Flix": "greenhouse/flix: 186 open, 2 relevant",
    "Vay": "greenhouse/vay: 16 open, 0 relevant",
    "Dott": "no open roles found (check slug/ats in config.yaml)",
    "Flink": "ashby/flink: 2 open, 0 relevant",
@@ -183,7 +183,7 @@
    "Storyblok": "greenhouse/storyblok: 10 open, 0 relevant",
    "Hygraph": "recruitee/hygraph: 1 open, 0 relevant",
    "Bloomreach": "greenhouse/bloomreach: 54 open, 0 relevant",
-   "Contentstack": "greenhouse/contentstack: 13 open, 0 relevant",
+   "Contentstack": "greenhouse/contentstack: 12 open, 0 relevant",
    "Kontent.ai": "no open roles found (check slug/ats in config.yaml)",
    "Magnolia": "greenhouse/magnolia: 21 open, 0 relevant",
    "Prismic": "recruitee/prismic: 7 open, 0 relevant",
@@ -191,23 +191,23 @@
    "Umbraco": "no open roles found (check slug/ats in config.yaml)"
   },
   "remote_boards": {
-   "remotive": "50 listings, 2 relevant",
-   "remoteok": "173 listings, 42 relevant",
-   "weworkremotely": "84 listings, 8 relevant",
+   "remotive": "50 listings, 4 relevant",
+   "remoteok": "170 listings, 42 relevant",
+   "weworkremotely": "118 listings, 11 relevant",
    "jobicy": "100 listings, 8 relevant",
-   "himalayas": "318 listings, 176 relevant",
+   "himalayas": "400 listings, 225 relevant",
    "workingnomads": "35 listings, 0 relevant"
   },
   "arbeitsagentur": {
    "after_title_filter": 0
   },
   "boards": {
-   "raw": 1909,
-   "after_title_filter": 171
+   "raw": 1840,
+   "after_title_filter": 124
   },
-  "linkedin_descriptions_fetched": 10
+  "linkedin_descriptions_fetched": 4
  },
  "errors": [],
- "new_candidates": 23,
- "collected_after_filters": 560
+ "new_candidates": 10,
+ "collected_after_filters": 567
 }
